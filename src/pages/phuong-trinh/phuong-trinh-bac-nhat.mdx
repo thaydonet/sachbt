@@ -4,6 +4,9 @@ title: "Phương trình bậc nhất"
 topic: "phuong-trinh"
 ---
 
+import Theory from '../../components/Theory.jsx';
+import Property from '../../components/Property.jsx';
+import Note from '../../components/Note.jsx';
 import Definition from '../../components/Definition.jsx';
 import Theorem from '../../components/Theorem.jsx';
 import Example from '../../components/Example.jsx';
@@ -12,6 +15,10 @@ import Exercise from '../../components/Exercise.jsx';
 import Quiz from '../../components/Quiz.jsx';
 
 # Phương trình bậc nhất
+
+<Theory title="Lý thuyết chung">
+  Phương trình bậc nhất là nền tảng của đại số, giúp giải quyết các bài toán về tìm giá trị chưa biết trong các mối quan hệ tuyến tính.
+</Theory>
 
 ## 1. Lý thuyết
 
@@ -26,6 +33,10 @@ Trong đó:
 - $a, b$ là các hệ số ($a \neq 0$)
 
 </Definition>
+
+<Note title="Lưu ý quan trọng">
+  Nếu $a = 0$ và $b \neq 0$, phương trình $0x + b = 0$ vô nghiệm. Nếu $a = 0$ và $b = 0$, phương trình $0x + 0 = 0$ có vô số nghiệm.
+</Note>
 
 <Theorem title="Công thức nghiệm">
 
@@ -118,24 +129,52 @@ Vậy bạn phải trả 90,000 đồng.
   client:load
   questions={[
     {
-      question: "Nghiệm của phương trình 3x - 9 = 0 là:",
-      options: ["x = 3", "x = -3", "x = 6", "x = -6"],
-      correct: "x = 3"
+      type: "mcq",
+      question: "Nghiệm của phương trình $3x - 9 = 0$ là:",
+      option_a: "$x = 3$",
+      option_b: "$x = -3$",
+      option_c: "$x = 6$",
+      option_d: "$x = -6$",
+      correct_option: "A",
+      explanation: "Ta có $3x - 9 = 0 \\Leftrightarrow x = 3$",
+      difficulty_level: "easy",
+      is_dynamic: false
     },
     {
-      question: "Phương trình nào sau đây có nghiệm x = 2?",
-      options: ["2x + 4 = 0", "3x - 6 = 0", "x + 2 = 0", "4x + 8 = 0"],
-      correct: "3x - 6 = 0"
+      type: "mcq",
+      question: "Phương trình nào sau đây có nghiệm $x = 2$?",
+      option_a: "$2x + 4 = 0$",
+      option_b: "$3x - 6 = 0$",
+      option_c: "$x + 2 = 0$",
+      option_d: "$4x + 8 = 0$",
+      correct_option: "B",
+      explanation: "Thay $x = 2$ vào phương trình $3x - 6 = 0$, ta được $3(2) - 6 = 0$ (đúng).",
+      difficulty_level: "medium",
+      is_dynamic: false
     },
     {
+      type: "mcq",
       question: "Giải phương trình 5x + 15 = 0, ta được:",
-      options: ["x = 3", "x = -3", "x = 5", "x = -5"],
-      correct: "x = -3"
+      option_a: "x = 3",
+      option_b: "x = -3",
+      option_c: "x = 5",
+      option_d: "x = -5",
+      correct_option: "B",
+      explanation: "Ta có $5x = -15 \\Leftrightarrow x = -3$",
+      difficulty_level: "easy",
+      is_dynamic: false
     },
     {
+      type: "mcq",
       question: "Phương trình 2x - 4 = x + 1 có nghiệm là:",
-      options: ["x = 3", "x = 5", "x = 2", "x = 4"],
-      correct: "x = 5"
+      option_a: "x = 3",
+      option_b: "x = 5",
+      option_c: "x = 2",
+      option_d: "x = 4",
+      correct_option: "B",
+      explanation: "Chuyển vế, ta được: $2x - x = 1 + 4 \\Leftrightarrow x = 5$",
+      difficulty_level: "medium",
+      is_dynamic: false
     }
   ]}
 />
@@ -160,4 +199,16 @@ d) $\frac{x + 1}{2} - \frac{x - 1}{3} = 1$
 
 **Bài 4:** Giải và biện luận phương trình: $(m - 1)x + 2m = 3$ theo tham số $m$
 
+**Đáp án:**
+
+- **Bài 1:**
+  a) $x = 2$
+  b) $x = 9$
+  c) $x = 11$
+  d) $x = \frac{1}{5}$
+- **Bài 2:** $m = -1$
+- **Bài 3:** $AB = 20$ km
+- **Bài 4:** 
+  - Nếu $m=1$: Phương trình vô nghiệm.
+  - Nếu $m \neq 1$: $x = \frac{3-2m}{m-1}$
 </Exercise>
