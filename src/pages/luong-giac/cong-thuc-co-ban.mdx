@@ -1,0 +1,197 @@
+---
+layout: ../../layouts/LessonLayout.astro
+title: "Công thức lượng giác cơ bản"
+topic: "luong-giac"
+---
+
+import Definition from '../../components/Definition.jsx';
+import Theorem from '../../components/Theorem.jsx';
+import Example from '../../components/Example.jsx';
+import Practice from '../../components/Practice.jsx';
+import Exercise from '../../components/Exercise.jsx';
+import Quiz from '../../components/Quiz.jsx';
+
+# Công thức lượng giác cơ bản
+
+## 1. Lý thuyết
+
+<Definition title="Định nghĩa các hàm lượng giác">
+
+Cho góc $\alpha$ trong tam giác vuông, ta có:
+
+$$\sin \alpha = \frac{\text{cạnh đối}}{\text{cạnh huyền}}$$
+
+$$\cos \alpha = \frac{\text{cạnh kề}}{\text{cạnh huyền}}$$
+
+$$\tan \alpha = \frac{\text{cạnh đối}}{\text{cạnh kề}} = \frac{\sin \alpha}{\cos \alpha}$$
+
+$$\cot \alpha = \frac{\text{cạnh kề}}{\text{cạnh đối}} = \frac{\cos \alpha}{\sin \alpha}$$
+
+</Definition>
+
+<Theorem title="Công thức lượng giác cơ bản">
+
+**1. Công thức Pythagore:**
+
+$$\sin^2 \alpha + \cos^2 \alpha = 1$$
+
+$$1 + \tan^2 \alpha = \frac{1}{\cos^2 \alpha}$$
+
+$$1 + \cot^2 \alpha = \frac{1}{\sin^2 \alpha}$$
+
+**2. Công thức góc đối:**
+
+$$\sin(-\alpha) = -\sin \alpha$$
+
+$$\cos(-\alpha) = \cos \alpha$$
+
+$$\tan(-\alpha) = -\tan \alpha$$
+
+**3. Công thức cộng:**
+
+$$\sin(\alpha + \beta) = \sin \alpha \cos \beta + \cos \alpha \sin \beta$$
+
+$$\cos(\alpha + \beta) = \cos \alpha \cos \beta - \sin \alpha \sin \beta$$
+
+$$\tan(\alpha + \beta) = \frac{\tan \alpha + \tan \beta}{1 - \tan \alpha \tan \beta}$$
+
+</Theorem>
+
+## 2. Ví dụ minh họa
+
+<Example title="Ví dụ 1: Tính giá trị lượng giác">
+
+Cho $\sin \alpha = \frac{3}{5}$ và $0° < \alpha < 90°$. Tính $\cos \alpha$ và $\tan \alpha$.
+
+**Lời giải:**
+
+Từ công thức $\sin^2 \alpha + \cos^2 \alpha = 1$, ta có:
+
+$$\cos^2 \alpha = 1 - \sin^2 \alpha = 1 - \left(\frac{3}{5}\right)^2 = 1 - \frac{9}{25} = \frac{16}{25}$$
+
+Vì $0° < \alpha < 90°$ nên $\cos \alpha > 0$:
+
+$$\cos \alpha = \frac{4}{5}$$
+
+Do đó:
+
+$$\tan \alpha = \frac{\sin \alpha}{\cos \alpha} = \frac{3/5}{4/5} = \frac{3}{4}$$
+
+</Example>
+
+<Example title="Ví dụ 2: Rút gọn biểu thức">
+
+Rút gọn biểu thức: $A = \sin^2 x + \cos^2 x + \tan^2 x - \frac{1}{\cos^2 x}$
+
+**Lời giải:**
+
+Ta có:
+
+$$A = \sin^2 x + \cos^2 x + \tan^2 x - \frac{1}{\cos^2 x}$$
+
+$$= 1 + \tan^2 x - \frac{1}{\cos^2 x}$$
+
+Mà $1 + \tan^2 x = \frac{1}{\cos^2 x}$, nên:
+
+$$A = \frac{1}{\cos^2 x} - \frac{1}{\cos^2 x} = 0$$
+
+</Example>
+
+## 3. Thực hành
+
+<Practice title="Bài tập thực hành">
+
+**Bài 1:** Cho $\cos \alpha = \frac{5}{13}$ và $0° < \alpha < 90°$. Tính $\sin \alpha$, $\tan \alpha$, $\cot \alpha$.
+
+**Bài 2:** Chứng minh các đẳng thức sau:
+
+a) $\sin^4 x + \cos^4 x = 1 - 2\sin^2 x \cos^2 x$
+
+b) $\frac{1 - \cos x}{\sin x} = \frac{\sin x}{1 + \cos x}$
+
+**Bài 3:** Tính giá trị của biểu thức:
+
+$$B = \sin 30° \cos 60° + \cos 30° \sin 60°$$
+
+</Practice>
+
+## 4. Vận dụng
+
+<Example title="Bài toán thực tế">
+
+Một cái thang dài 5m được đặt dựa vào tường, tạo với mặt đất một góc $60°$. Hỏi chân thang cách tường bao nhiêu mét?
+
+**Lời giải:**
+
+Gọi khoảng cách từ chân thang đến tường là $x$ (m).
+
+Ta có:
+
+$$\cos 60° = \frac{x}{5}$$
+
+$$\frac{1}{2} = \frac{x}{5}$$
+
+$$x = \frac{5}{2} = 2.5 \text{ (m)}$$
+
+Vậy chân thang cách tường 2.5m.
+
+</Example>
+
+## 5. Trắc nghiệm ôn tập
+
+<Quiz 
+  client:load
+  questions={[
+    {
+      question: "Giá trị của sin²α + cos²α bằng:",
+      options: ["0", "1", "2", "-1"],
+      correct: "1"
+    },
+    {
+      question: "Nếu sin α = 0.6 và 0° < α < 90°, thì cos α bằng:",
+      options: ["0.8", "0.6", "0.4", "0.2"],
+      correct: "0.8"
+    },
+    {
+      question: "Giá trị của sin 30° là:",
+      options: ["1/2", "√3/2", "√2/2", "1"],
+      correct: "1/2"
+    },
+    {
+      question: "Công thức nào sau đây đúng?",
+      options: [
+        "tan α = sin α / cos α",
+        "tan α = cos α / sin α",
+        "tan α = sin α × cos α",
+        "tan α = 1 / sin α"
+      ],
+      correct: "tan α = sin α / cos α"
+    }
+  ]}
+/>
+
+## 6. Bài tập làm thêm
+
+<Exercise title="Bài tập nâng cao">
+
+**Bài 1:** Cho $\tan \alpha = 2$. Tính:
+
+a) $\sin \alpha$ và $\cos \alpha$
+
+b) $\frac{3\sin \alpha - 2\cos \alpha}{\sin \alpha + \cos \alpha}$
+
+**Bài 2:** Chứng minh các đẳng thức:
+
+a) $\tan x + \cot x = \frac{1}{\sin x \cos x}$
+
+b) $(\sin x + \cos x)^2 = 1 + 2\sin x \cos x$
+
+c) $\frac{1 - \sin x}{\cos x} = \frac{\cos x}{1 + \sin x}$
+
+**Bài 3:** Tính giá trị biểu thức:
+
+$$C = \sin^2 15° + \sin^2 30° + \sin^2 45° + \sin^2 60° + \sin^2 75°$$
+
+**Bài 4:** Một tòa nhà cao 50m. Từ một điểm trên mặt đất, người ta nhìn thấy đỉnh tòa nhà với góc nâng $45°$. Tính khoảng cách từ điểm đó đến chân tòa nhà.
+
+</Exercise>

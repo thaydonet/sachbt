@@ -1,0 +1,189 @@
+---
+layout: ../../layouts/LessonLayout.astro
+title: "Số trung bình"
+topic: "thong-ke"
+---
+
+import Definition from '../../components/Definition.jsx';
+import Theorem from '../../components/Theorem.jsx';
+import Example from '../../components/Example.jsx';
+import Practice from '../../components/Practice.jsx';
+import Exercise from '../../components/Exercise.jsx';
+import Quiz from '../../components/Quiz.jsx';
+
+# Số trung bình
+
+## 1. Lý thuyết
+
+<Definition title="Số trung bình cộng">
+
+Cho mẫu số liệu: $x_1, x_2, ..., x_n$
+
+**Số trung bình cộng** (mean) được tính:
+
+$$\overline{x} = \frac{x_1 + x_2 + ... + x_n}{n} = \frac{1}{n}\sum_{i=1}^{n}x_i$$
+
+Nếu các giá trị $x_i$ xuất hiện với tần số $n_i$:
+
+$$\overline{x} = \frac{n_1x_1 + n_2x_2 + ... + n_kx_k}{n_1 + n_2 + ... + n_k}$$
+
+</Definition>
+
+<Definition title="Trung vị và Mốt">
+
+**Trung vị (Median):** Là giá trị nằm ở vị trí giữa khi sắp xếp dữ liệu theo thứ tự tăng dần.
+
+- Nếu $n$ lẻ: Trung vị là giá trị ở vị trí $\frac{n+1}{2}$
+- Nếu $n$ chẵn: Trung vị là trung bình cộng của 2 giá trị ở vị trí $\frac{n}{2}$ và $\frac{n}{2} + 1$
+
+**Mốt (Mode):** Là giá trị xuất hiện nhiều nhất trong mẫu số liệu.
+
+</Definition>
+
+## 2. Ví dụ minh họa
+
+<Example title="Ví dụ 1: Tính số trung bình cộng">
+
+Điểm kiểm tra của 5 học sinh là: 7, 8, 6, 9, 10. Tính điểm trung bình.
+
+**Lời giải:**
+
+$$\overline{x} = \frac{7 + 8 + 6 + 9 + 10}{5} = \frac{40}{5} = 8$$
+
+Vậy điểm trung bình là 8.
+
+</Example>
+
+<Example title="Ví dụ 2: Số trung bình có tần số">
+
+Bảng thống kê điểm thi của một lớp:
+
+| Điểm | 5 | 6 | 7 | 8 | 9 | 10 |
+|------|---|---|---|---|---|----|
+| Số học sinh | 2 | 5 | 8 | 10 | 4 | 1 |
+
+Tính điểm trung bình của lớp.
+
+**Lời giải:**
+
+Tổng số học sinh: $n = 2 + 5 + 8 + 10 + 4 + 1 = 30$
+
+$$\overline{x} = \frac{2 \cdot 5 + 5 \cdot 6 + 8 \cdot 7 + 10 \cdot 8 + 4 \cdot 9 + 1 \cdot 10}{30}$$
+
+$$= \frac{10 + 30 + 56 + 80 + 36 + 10}{30} = \frac{222}{30} = 7.4$$
+
+</Example>
+
+<Example title="Ví dụ 3: Trung vị và Mốt">
+
+Cho dãy số liệu: 3, 7, 5, 9, 5, 2, 8, 5. Tìm trung vị và mốt.
+
+**Lời giải:**
+
+Sắp xếp: 2, 3, 5, 5, 5, 7, 8, 9
+
+Có $n = 8$ (chẵn)
+
+**Trung vị:** Trung bình của phần tử thứ 4 và thứ 5:
+
+$$Me = \frac{5 + 5}{2} = 5$$
+
+**Mốt:** Giá trị 5 xuất hiện nhiều nhất (3 lần)
+
+$$Mo = 5$$
+
+</Example>
+
+## 3. Thực hành
+
+<Practice title="Bài tập thực hành">
+
+**Bài 1:** Tính số trung bình cộng của dãy số: 12, 15, 18, 20, 25
+
+**Bài 2:** Chiều cao (cm) của 7 học sinh là: 155, 160, 158, 162, 160, 165, 160. Tìm:
+
+a) Chiều cao trung bình
+
+b) Trung vị
+
+c) Mốt
+
+**Bài 3:** Bảng thống kê số sách đọc trong tháng:
+
+| Số sách | 0 | 1 | 2 | 3 | 4 |
+|---------|---|---|---|---|---|
+| Số người | 3 | 5 | 8 | 6 | 2 |
+
+Tính số sách trung bình mỗi người đọc.
+
+</Practice>
+
+## 4. Vận dụng
+
+<Example title="Bài toán thực tế">
+
+Một cửa hàng thống kê doanh thu (triệu đồng) trong 6 ngày:
+
+Thứ 2: 15, Thứ 3: 18, Thứ 4: 20, Thứ 5: 22, Thứ 6: 25, Thứ 7: 30
+
+a) Tính doanh thu trung bình mỗi ngày
+
+b) Nếu muốn doanh thu trung bình cả tuần (7 ngày) đạt 22 triệu/ngày, Chủ nhật cần đạt doanh thu bao nhiêu?
+
+**Lời giải:**
+
+a) Doanh thu trung bình 6 ngày:
+
+$$\overline{x} = \frac{15 + 18 + 20 + 22 + 25 + 30}{6} = \frac{130}{6} \approx 21.67 \text{ triệu}$$
+
+b) Gọi doanh thu Chủ nhật là $x$ (triệu)
+
+$$\frac{130 + x}{7} = 22$$
+
+$$130 + x = 154$$
+
+$$x = 24 \text{ triệu}$$
+
+</Example>
+
+## 5. Trắc nghiệm ôn tập
+
+<Quiz 
+  client:load
+  questions={[
+    {
+      question: "Số trung bình của dãy 2, 4, 6, 8, 10 là:",
+      options: ["5", "6", "7", "8"],
+      correct: "6"
+    },
+    {
+      question: "Trung vị của dãy 1, 3, 5, 7, 9 là:",
+      options: ["3", "5", "7", "9"],
+      correct: "5"
+    },
+    {
+      question: "Mốt của dãy 2, 3, 3, 4, 5, 3, 6 là:",
+      options: ["2", "3", "4", "5"],
+      correct: "3"
+    },
+    {
+      question: "Nếu trung bình của 4 số là 10, tổng 4 số đó là:",
+      options: ["20", "30", "40", "50"],
+      correct: "40"
+    }
+  ]}
+/>
+
+## 6. Bài tập làm thêm
+
+<Exercise title="Bài tập nâng cao">
+
+**Bài 1:** Điểm trung bình của 10 học sinh là 7.5. Nếu thêm điểm của 2 học sinh nữa thì điểm trung bình là 7.8. Tính tổng điểm của 2 học sinh mới.
+
+**Bài 2:** Một lớp có 40 học sinh, điểm trung bình môn Toán là 7.2. Trong đó có 25 học sinh nữ có điểm trung bình là 7.6. Tính điểm trung bình của học sinh nam.
+
+**Bài 3:** Cho dãy số liệu: 5, 7, 9, x, 13. Biết số trung bình cộng là 9. Tìm x và trung vị của dãy.
+
+**Bài 4:** Nhiệt độ trung bình trong tuần là 28°C. Biết nhiệt độ 6 ngày đầu lần lượt là: 26, 27, 29, 30, 28, 27. Tính nhiệt độ ngày thứ 7.
+
+</Exercise>

@@ -1,0 +1,220 @@
+---
+layout: ../../layouts/LessonLayout.astro
+title: "Phương trình bậc hai"
+topic: "phuong-trinh"
+---
+
+import Definition from '../../components/Definition.jsx';
+import Theorem from '../../components/Theorem.jsx';
+import Example from '../../components/Example.jsx';
+import Practice from '../../components/Practice.jsx';
+import Exercise from '../../components/Exercise.jsx';
+import Quiz from '../../components/Quiz.jsx';
+
+# Phương trình bậc hai
+
+## 1. Lý thuyết
+
+<Definition title="Định nghĩa phương trình bậc hai">
+
+Phương trình bậc hai một ẩn là phương trình có dạng:
+
+$$ax^2 + bx + c = 0$$
+
+Trong đó:
+- $x$ là ẩn số
+- $a, b, c$ là các hệ số ($a \neq 0$)
+
+</Definition>
+
+<Theorem title="Công thức nghiệm - Định lý Delta">
+
+Cho phương trình $ax^2 + bx + c = 0$ với $a \neq 0$.
+
+Đặt $\Delta = b^2 - 4ac$ (delta - biệt thức)
+
+**Kết luận:**
+
+- Nếu $\Delta < 0$: Phương trình vô nghiệm
+- Nếu $\Delta = 0$: Phương trình có nghiệm kép $x = -\frac{b}{2a}$
+- Nếu $\Delta > 0$: Phương trình có hai nghiệm phân biệt:
+
+$$x_1 = \frac{-b + \sqrt{\Delta}}{2a}, \quad x_2 = \frac{-b - \sqrt{\Delta}}{2a}$$
+
+</Theorem>
+
+<Theorem title="Định lý Vi-ét">
+
+Nếu phương trình $ax^2 + bx + c = 0$ có hai nghiệm $x_1, x_2$ thì:
+
+$$x_1 + x_2 = -\frac{b}{a}$$
+
+$$x_1 \cdot x_2 = \frac{c}{a}$$
+
+</Theorem>
+
+## 2. Ví dụ minh họa
+
+<Example title="Ví dụ 1: Phương trình có hai nghiệm phân biệt">
+
+Giải phương trình: $x^2 - 5x + 6 = 0$
+
+**Lời giải:**
+
+Ta có: $a = 1$, $b = -5$, $c = 6$
+
+Tính delta:
+
+$$\Delta = b^2 - 4ac = (-5)^2 - 4 \cdot 1 \cdot 6 = 25 - 24 = 1 > 0$$
+
+Phương trình có hai nghiệm phân biệt:
+
+$$x_1 = \frac{-(-5) + \sqrt{1}}{2 \cdot 1} = \frac{5 + 1}{2} = 3$$
+
+$$x_2 = \frac{-(-5) - \sqrt{1}}{2 \cdot 1} = \frac{5 - 1}{2} = 2$$
+
+Vậy phương trình có hai nghiệm: $x_1 = 3$ và $x_2 = 2$
+
+</Example>
+
+<Example title="Ví dụ 2: Phương trình có nghiệm kép">
+
+Giải phương trình: $x^2 - 4x + 4 = 0$
+
+**Lời giải:**
+
+Ta có: $a = 1$, $b = -4$, $c = 4$
+
+$$\Delta = (-4)^2 - 4 \cdot 1 \cdot 4 = 16 - 16 = 0$$
+
+Phương trình có nghiệm kép:
+
+$$x = \frac{-(-4)}{2 \cdot 1} = \frac{4}{2} = 2$$
+
+Vậy phương trình có nghiệm kép $x = 2$
+
+</Example>
+
+<Example title="Ví dụ 3: Phương trình vô nghiệm">
+
+Giải phương trình: $x^2 + 2x + 5 = 0$
+
+**Lời giải:**
+
+Ta có: $a = 1$, $b = 2$, $c = 5$
+
+$$\Delta = 2^2 - 4 \cdot 1 \cdot 5 = 4 - 20 = -16 < 0$$
+
+Vậy phương trình vô nghiệm.
+
+</Example>
+
+## 3. Thực hành
+
+<Practice title="Bài tập thực hành">
+
+Giải các phương trình sau:
+
+1. $x^2 - 7x + 12 = 0$
+2. $2x^2 + 5x - 3 = 0$
+3. $x^2 - 6x + 9 = 0$
+4. $x^2 + x + 1 = 0$
+5. $3x^2 - 12x = 0$
+
+**Gợi ý:**
+- Xác định hệ số $a$, $b$, $c$
+- Tính $\Delta = b^2 - 4ac$
+- Xét dấu của $\Delta$ để kết luận số nghiệm
+- Áp dụng công thức nghiệm
+
+</Practice>
+
+## 4. Vận dụng
+
+<Example title="Bài toán thực tế">
+
+Một mảnh vườn hình chữ nhật có chiều dài hơn chiều rộng 3m và diện tích là 54m². Tính kích thước của mảnh vườn.
+
+**Lời giải:**
+
+Gọi chiều rộng là $x$ (m), điều kiện: $x > 0$
+
+Chiều dài là: $x + 3$ (m)
+
+Diện tích: $x(x + 3) = 54$
+
+$$x^2 + 3x - 54 = 0$$
+
+Tính delta:
+
+$$\Delta = 3^2 - 4 \cdot 1 \cdot (-54) = 9 + 216 = 225 > 0$$
+
+$$x_1 = \frac{-3 + \sqrt{225}}{2} = \frac{-3 + 15}{2} = 6 \text{ (nhận)}$$
+
+$$x_2 = \frac{-3 - 15}{2} = -9 \text{ (loại)}$$
+
+Vậy chiều rộng là 6m, chiều dài là 9m.
+
+</Example>
+
+## 5. Trắc nghiệm ôn tập
+
+<Quiz 
+  client:load
+  questions={[
+    {
+      question: "Phương trình x² - 4x + 3 = 0 có bao nhiêu nghiệm?",
+      options: ["Vô nghiệm", "1 nghiệm", "2 nghiệm", "3 nghiệm"],
+      correct: "2 nghiệm"
+    },
+    {
+      question: "Nghiệm của phương trình x² - 9 = 0 là:",
+      options: ["x = 3", "x = -3", "x = ±3", "Vô nghiệm"],
+      correct: "x = ±3"
+    },
+    {
+      question: "Phương trình x² + 4x + 4 = 0 có nghiệm là:",
+      options: ["x = 2", "x = -2", "x = 4", "x = -4"],
+      correct: "x = -2"
+    },
+    {
+      question: "Với phương trình x² + bx + c = 0 có hai nghiệm x₁ = 2, x₂ = 3, thì x₁ + x₂ bằng:",
+      options: ["5", "6", "-5", "-6"],
+      correct: "5"
+    }
+  ]}
+/>
+
+## 6. Bài tập làm thêm
+
+<Exercise title="Bài tập nâng cao">
+
+**Bài 1:** Giải các phương trình:
+
+a) $4x^2 - 12x + 9 = 0$
+
+b) $x^2 - 2\sqrt{3}x + 3 = 0$
+
+c) $(x - 1)(x + 2) = 4$
+
+**Bài 2:** Tìm $m$ để phương trình $x^2 - 2mx + m^2 - 1 = 0$ có hai nghiệm phân biệt.
+
+**Bài 3:** Cho phương trình $x^2 - 5x + 6 = 0$ có hai nghiệm $x_1, x_2$. Không giải phương trình, tính:
+
+a) $x_1^2 + x_2^2$
+
+b) $\frac{1}{x_1} + \frac{1}{x_2}$
+
+c) $|x_1 - x_2|$
+
+**Bài 4:** Một quả bóng được ném lên cao, độ cao $h$ (mét) của quả bóng sau $t$ giây được cho bởi công thức:
+
+$$h = -5t^2 + 20t + 1$$
+
+a) Tính độ cao của quả bóng sau 1 giây.
+
+b) Sau bao lâu quả bóng chạm đất?
+
+c) Độ cao lớn nhất mà quả bóng đạt được là bao nhiêu?
+
+</Exercise>

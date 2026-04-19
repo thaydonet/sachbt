@@ -1,0 +1,233 @@
+---
+layout: ../../layouts/LessonLayout.astro
+title: "Khái niệm cơ bản về xác suất"
+topic: "xac-suat"
+---
+
+import Definition from '../../components/Definition.jsx';
+import Theorem from '../../components/Theorem.jsx';
+import Example from '../../components/Example.jsx';
+import Practice from '../../components/Practice.jsx';
+import Exercise from '../../components/Exercise.jsx';
+import Quiz from '../../components/Quiz.jsx';
+
+# Khái niệm cơ bản về xác suất
+
+## 1. Lý thuyết
+
+<Definition title="Phép thử và biến cố">
+
+**Phép thử ngẫu nhiên:** Là một thí nghiệm hay một hành động mà:
+- Kết quả không thể dự đoán trước được
+- Có thể lặp lại nhiều lần trong cùng điều kiện
+
+**Không gian mẫu ($\Omega$):** Tập hợp tất cả các kết quả có thể xảy ra của phép thử.
+
+**Biến cố:** Là một tập con của không gian mẫu.
+- Biến cố chắc chắn: $\Omega$
+- Biến cố không thể: $\emptyset$
+
+</Definition>
+
+<Definition title="Xác suất của biến cố">
+
+Cho không gian mẫu $\Omega$ có $n$ phần tử đồng khả năng. Biến cố $A$ có $k$ phần tử.
+
+Xác suất của biến cố $A$ là:
+
+$$P(A) = \frac{k}{n} = \frac{|A|}{|\Omega|}$$
+
+**Tính chất:**
+- $0 \leq P(A) \leq 1$
+- $P(\Omega) = 1$
+- $P(\emptyset) = 0$
+
+</Definition>
+
+<Theorem title="Các quy tắc tính xác suất">
+
+**1. Quy tắc cộng:**
+
+Nếu $A$ và $B$ xung khắc (không đồng thời xảy ra):
+
+$$P(A \cup B) = P(A) + P(B)$$
+
+**2. Biến cố đối:**
+
+$$P(\overline{A}) = 1 - P(A)$$
+
+**3. Công thức tổng quát:**
+
+$$P(A \cup B) = P(A) + P(B) - P(A \cap B)$$
+
+</Theorem>
+
+## 2. Ví dụ minh họa
+
+<Example title="Ví dụ 1: Tung xúc xắc">
+
+Tung một con xúc xắc cân đối. Tính xác suất để:
+
+a) Xuất hiện mặt 6 chấm
+
+b) Xuất hiện mặt chẵn
+
+**Lời giải:**
+
+Không gian mẫu: $\Omega = \{1, 2, 3, 4, 5, 6\}$, có $|\Omega| = 6$
+
+a) Biến cố $A$: "Xuất hiện mặt 6 chấm" = $\{6\}$
+
+$$P(A) = \frac{1}{6}$$
+
+b) Biến cố $B$: "Xuất hiện mặt chẵn" = $\{2, 4, 6\}$
+
+$$P(B) = \frac{3}{6} = \frac{1}{2}$$
+
+</Example>
+
+<Example title="Ví dụ 2: Rút bài">
+
+Từ bộ bài 52 lá, rút ngẫu nhiên 1 lá. Tính xác suất để:
+
+a) Rút được lá Át
+
+b) Rút được lá cơ
+
+**Lời giải:**
+
+Không gian mẫu: $|\Omega| = 52$
+
+a) Có 4 lá Át trong bộ bài
+
+$$P(A) = \frac{4}{52} = \frac{1}{13}$$
+
+b) Có 13 lá cơ trong bộ bài
+
+$$P(B) = \frac{13}{52} = \frac{1}{4}$$
+
+</Example>
+
+<Example title="Ví dụ 3: Biến cố đối">
+
+Một hộp có 5 bi đỏ và 3 bi xanh. Lấy ngẫu nhiên 2 bi. Tính xác suất để có ít nhất 1 bi đỏ.
+
+**Lời giải:**
+
+Tổng số cách lấy 2 bi từ 8 bi: $C_8^2 = 28$
+
+Biến cố $A$: "Có ít nhất 1 bi đỏ"
+
+Biến cố đối $\overline{A}$: "Không có bi đỏ nào" = "Cả 2 bi đều xanh"
+
+Số cách lấy 2 bi xanh từ 3 bi xanh: $C_3^2 = 3$
+
+$$P(\overline{A}) = \frac{3}{28}$$
+
+$$P(A) = 1 - P(\overline{A}) = 1 - \frac{3}{28} = \frac{25}{28}$$
+
+</Example>
+
+## 3. Thực hành
+
+<Practice title="Bài tập thực hành">
+
+**Bài 1:** Tung hai đồng xu cân đối. Tính xác suất để:
+
+a) Cả hai đều xuất hiện mặt sấp
+
+b) Có ít nhất một mặt ngửa
+
+**Bài 2:** Một hộp có 10 quả cầu được đánh số từ 1 đến 10. Lấy ngẫu nhiên 1 quả. Tính xác suất để:
+
+a) Lấy được quả có số chẵn
+
+b) Lấy được quả có số chia hết cho 3
+
+**Bài 3:** Gieo hai con xúc xắc. Tính xác suất để tổng số chấm xuất hiện bằng 7.
+
+</Practice>
+
+## 4. Vận dụng
+
+<Example title="Bài toán thực tế">
+
+Một lớp học có 40 học sinh, trong đó có 24 nữ và 16 nam. Chọn ngẫu nhiên 3 học sinh. Tính xác suất để trong 3 học sinh được chọn có ít nhất 1 học sinh nữ.
+
+**Lời giải:**
+
+Tổng số cách chọn 3 học sinh từ 40: $C_{40}^3 = 9880$
+
+Biến cố $A$: "Có ít nhất 1 học sinh nữ"
+
+Biến cố đối $\overline{A}$: "Không có học sinh nữ nào" = "Cả 3 đều là nam"
+
+Số cách chọn 3 nam từ 16 nam: $C_{16}^3 = 560$
+
+$$P(\overline{A}) = \frac{560}{9880} = \frac{1}{17.64} \approx 0.0567$$
+
+$$P(A) = 1 - \frac{560}{9880} = \frac{9320}{9880} \approx 0.943$$
+
+</Example>
+
+## 5. Trắc nghiệm ôn tập
+
+<Quiz 
+  client:load
+  questions={[
+    {
+      question: "Tung một đồng xu cân đối, xác suất xuất hiện mặt sấp là:",
+      options: ["1/4", "1/3", "1/2", "1"],
+      correct: "1/2"
+    },
+    {
+      question: "Nếu P(A) = 0.3 thì P(Ā) bằng:",
+      options: ["0.7", "0.3", "1", "0"],
+      correct: "0.7"
+    },
+    {
+      question: "Gieo một xúc xắc, xác suất xuất hiện mặt lẻ là:",
+      options: ["1/6", "1/3", "1/2", "2/3"],
+      correct: "1/2"
+    },
+    {
+      question: "Xác suất của biến cố chắc chắn là:",
+      options: ["0", "0.5", "1", "Không xác định"],
+      correct: "1"
+    }
+  ]}
+/>
+
+## 6. Bài tập làm thêm
+
+<Exercise title="Bài tập nâng cao">
+
+**Bài 1:** Gieo ba đồng xu cân đối. Tính xác suất để:
+
+a) Cả ba đều xuất hiện mặt sấp
+
+b) Có đúng 2 mặt sấp
+
+c) Có ít nhất 1 mặt ngửa
+
+**Bài 2:** Một hộp có 5 bi đỏ, 4 bi xanh và 3 bi vàng. Lấy ngẫu nhiên 2 bi. Tính xác suất để:
+
+a) Cả hai bi cùng màu
+
+b) Hai bi khác màu
+
+**Bài 3:** Chọn ngẫu nhiên một số tự nhiên từ 1 đến 100. Tính xác suất để số đó:
+
+a) Chia hết cho 5
+
+b) Là số nguyên tố
+
+c) Là số chính phương
+
+**Bài 4:** Trong một lớp có 30 học sinh, có 18 học sinh thích môn Toán, 15 học sinh thích môn Lý, 10 học sinh thích cả hai môn. Chọn ngẫu nhiên 1 học sinh. Tính xác suất để học sinh đó:
+
+a) Thích ít nhất một trong hai môn
+
+b) Không thích môn nào
+
+</Exercise>

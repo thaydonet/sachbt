@@ -1,0 +1,323 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navigation from '../components/Navigation.astro';
+---
+
+<Layout title="Sách Toán Phổ Thông">
+  <Navigation />
+  
+  <header class="relative overflow-hidden bg-gradient-to-br from-indigo-900 via-purple-900 to-slate-900 text-white py-16 sm:py-24">
+    <div class="absolute inset-0 overflow-hidden pointer-events-none">
+      <div class="absolute -top-1/2 -left-1/4 w-full h-full bg-gradient-to-b from-indigo-500/20 to-transparent blur-3xl rounded-full mix-blend-overlay"></div>
+      <div class="absolute -bottom-1/2 -right-1/4 w-full h-full bg-gradient-to-t from-purple-500/20 to-transparent blur-3xl rounded-full mix-blend-overlay"></div>
+    </div>
+    
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10">
+      <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-6 drop-shadow-lg">
+        Sách <span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">Toán</span> Phổ Thông
+      </h1>
+      <p class="mt-4 max-w-2xl text-lg sm:text-xl md:text-2xl text-indigo-100 mx-auto font-light">
+        Học toán dễ dàng và hiệu quả với hệ thống bài giảng có cấu trúc, chuẩn xác và sinh động.
+      </p>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mb-4 tracking-tight">Cùng bắt đầu học theo chuyên đề</h2>
+      <p class="text-lg text-slate-600 max-w-3xl mx-auto">Khám phá kiến thức toán học từ cơ bản đến nâng cao được phân chia một cách hệ thống.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Phương trình -->
+      <div class="relative group overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-blue-50 hover:bg-blue-100 border-blue-200">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 to-indigo-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div class="p-6 sm:p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-4xl drop-shadow-sm group-hover:scale-110 transition-transform duration-300">📐</span>
+            <h3 class="text-xl font-bold text-blue-700">Phương trình</h3>
+          </div>
+          <p class="text-slate-600 mb-6 text-sm sm:text-base h-12 line-clamp-2">Học cách giải các loại phương trình từ cơ bản đến nâng cao</p>
+          <ul class="space-y-3">
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/phuong-trinh/phuong-trinh-bac-nhat" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Phương trình bậc nhất</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/phuong-trinh/phuong-trinh-bac-hai" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Phương trình bậc hai</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/phuong-trinh/he-phuong-trinh" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-blue-500 to-indigo-600 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Hệ phương trình</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Lượng giác -->
+      <div class="relative group overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-emerald-50 hover:bg-emerald-100 border-emerald-200">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-emerald-400 to-teal-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div class="p-6 sm:p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-4xl drop-shadow-sm group-hover:scale-110 transition-transform duration-300">📊</span>
+            <h3 class="text-xl font-bold text-emerald-700">Lượng giác</h3>
+          </div>
+          <p class="text-slate-600 mb-6 text-sm sm:text-base h-12 line-clamp-2">Khám phá thế giới của các hàm lượng giác và ứng dụng</p>
+          <ul class="space-y-3">
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/luong-giac/cong-thuc-co-ban" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Công thức cơ bản</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/luong-giac/phuong-trinh-luong-giac" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Phương trình lượng giác</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/luong-giac/ham-luong-giac" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-emerald-400 to-teal-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Hàm lượng giác</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Khảo sát hàm số -->
+      <div class="relative group overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-amber-50 hover:bg-amber-100 border-amber-200">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-amber-400 to-orange-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div class="p-6 sm:p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-4xl drop-shadow-sm group-hover:scale-110 transition-transform duration-300">📈</span>
+            <h3 class="text-xl font-bold text-amber-700">Khảo sát hàm số</h3>
+          </div>
+          <p class="text-slate-600 mb-6 text-sm sm:text-base h-12 line-clamp-2">Phân tích và vẽ đồ thị các hàm số đa dạng</p>
+          <ul class="space-y-3">
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/khao-sat-ham-so/dao-ham" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Đạo hàm và ứng dụng</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/khao-sat-ham-so/cuc-tri" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Cực trị hàm số</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/khao-sat-ham-so/do-thi" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-amber-400 to-orange-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Đồ thị hàm số</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Nguyên hàm - Tích phân -->
+      <div class="relative group overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-purple-50 hover:bg-purple-100 border-purple-200">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 to-pink-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div class="p-6 sm:p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-4xl drop-shadow-sm group-hover:scale-110 transition-transform duration-300">∫</span>
+            <h3 class="text-xl font-bold text-purple-700">Nguyên hàm - Tích phân</h3>
+          </div>
+          <p class="text-slate-600 mb-6 text-sm sm:text-base h-12 line-clamp-2">Tính toán diện tích và ứng dụng tích phân</p>
+          <ul class="space-y-3">
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/nguyen-ham-tich-phan/nguyen-ham" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Nguyên hàm cơ bản</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/nguyen-ham-tich-phan/tich-phan-xac-dinh" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Tích phân xác định</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/nguyen-ham-tich-phan/ung-dung" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Ứng dụng tích phân</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Xác suất -->
+      <div class="relative group overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-rose-50 hover:bg-rose-100 border-rose-200">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-rose-400 to-red-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div class="p-6 sm:p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-4xl drop-shadow-sm group-hover:scale-110 transition-transform duration-300">🎲</span>
+            <h3 class="text-xl font-bold text-rose-700">Xác suất</h3>
+          </div>
+          <p class="text-slate-600 mb-6 text-sm sm:text-base h-12 line-clamp-2">Nghiên cứu các quy luật ngẫu nhiên và khả năng xảy ra</p>
+          <ul class="space-y-3">
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/xac-suat/khai-niem-co-ban" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-rose-400 to-red-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Khái niệm cơ bản</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/xac-suat/bien-co" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-rose-400 to-red-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Biến cố và xác suất</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/xac-suat/bien-ngau-nhien" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-rose-400 to-red-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Biến ngẫu nhiên</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Thống kê -->
+      <div class="relative group overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-cyan-50 hover:bg-cyan-100 border-cyan-200">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-cyan-400 to-blue-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div class="p-6 sm:p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-4xl drop-shadow-sm group-hover:scale-110 transition-transform duration-300">📉</span>
+            <h3 class="text-xl font-bold text-cyan-700">Thống kê</h3>
+          </div>
+          <p class="text-slate-600 mb-6 text-sm sm:text-base h-12 line-clamp-2">Thu thập, phân tích và diễn giải dữ liệu</p>
+          <ul class="space-y-3">
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/thong-ke/so-trung-binh" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Số trung bình</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/thong-ke/phuong-sai" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Phương sai và độ lệch chuẩn</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/thong-ke/bieu-do" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Biểu đồ thống kê</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Hình học không gian -->
+      <div class="relative group overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-violet-50 hover:bg-violet-100 border-violet-200">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-violet-500 to-fuchsia-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div class="p-6 sm:p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-4xl drop-shadow-sm group-hover:scale-110 transition-transform duration-300">🔺</span>
+            <h3 class="text-xl font-bold text-violet-700">Hình học không gian</h3>
+          </div>
+          <p class="text-slate-600 mb-6 text-sm sm:text-base h-12 line-clamp-2">Khám phá các khối đa diện và mặt tròn xoay</p>
+          <ul class="space-y-3">
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/hinh-hoc-khong-gian/quan-he-song-song" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-600 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Quan hệ song song</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/hinh-hoc-khong-gian/quan-he-vuong-goc" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-600 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Quan hệ vuông góc</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/hinh-hoc-khong-gian/the-tich" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-violet-500 to-fuchsia-600 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Thể tích khối đa diện</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PP Tọa độ Oxy -->
+      <div class="relative group overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-pink-50 hover:bg-pink-100 border-pink-200">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-pink-400 to-rose-500 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div class="p-6 sm:p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-4xl drop-shadow-sm group-hover:scale-110 transition-transform duration-300">📍</span>
+            <h3 class="text-xl font-bold text-pink-700">PP Tọa độ Oxy</h3>
+          </div>
+          <p class="text-slate-600 mb-6 text-sm sm:text-base h-12 line-clamp-2">Phương pháp tọa độ trong mặt phẳng</p>
+          <ul class="space-y-3">
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/toa-do-oxy/vector" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pink-400 to-rose-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Vector trong mặt phẳng</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/toa-do-oxy/duong-thang" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pink-400 to-rose-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Phương trình đường thẳng</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/toa-do-oxy/duong-tron" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-pink-400 to-rose-500 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Phương trình đường tròn</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- PP Tọa độ Oxyz -->
+      <div class="relative group overflow-hidden rounded-2xl border transition-all duration-300 hover:-translate-y-2 hover:shadow-xl bg-indigo-50 hover:bg-indigo-100 border-indigo-200">
+        <div class="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-indigo-400 to-blue-600 scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
+        <div class="p-6 sm:p-8">
+          <div class="flex items-center gap-4 mb-4">
+            <span class="text-4xl drop-shadow-sm group-hover:scale-110 transition-transform duration-300">🌐</span>
+            <h3 class="text-xl font-bold text-indigo-700">PP Tọa độ Oxyz</h3>
+          </div>
+          <p class="text-slate-600 mb-6 text-sm sm:text-base h-12 line-clamp-2">Phương pháp tọa độ trong không gian</p>
+          <ul class="space-y-3">
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/toa-do-oxyz/vector-khong-gian" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-indigo-400 to-blue-600 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Vector trong không gian</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/toa-do-oxyz/duong-thang-khong-gian" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-indigo-400 to-blue-600 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Phương trình đường thẳng</span>
+              </a>
+            </li>
+            <li class="border-b border-white/40 pb-2 last:border-0 last:pb-0">
+              <a href="/toa-do-oxyz/mat-phang" class="group/link flex items-center gap-2 text-sm sm:text-base font-medium text-slate-700 hover:text-slate-900 transition-colors">
+                <span class="w-1.5 h-1.5 rounded-full bg-gradient-to-r from-indigo-400 to-blue-600 scale-0 group-hover/link:scale-100 transition-transform"></span>
+                <span class="group-hover/link:translate-x-1 transition-transform">Phương trình mặt phẳng</span>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</Layout>

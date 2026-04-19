@@ -1,0 +1,176 @@
+---
+layout: ../../layouts/LessonLayout.astro
+title: "Nguyên hàm cơ bản"
+topic: "nguyen-ham-tich-phan"
+---
+
+import Definition from '../../components/Definition.jsx';
+import Theorem from '../../components/Theorem.jsx';
+import Example from '../../components/Example.jsx';
+import Practice from '../../components/Practice.jsx';
+import Exercise from '../../components/Exercise.jsx';
+import Quiz from '../../components/Quiz.jsx';
+
+# Nguyên hàm cơ bản
+
+## 1. Lý thuyết
+
+<Definition title="Định nghĩa nguyên hàm">
+
+Hàm số $F(x)$ được gọi là nguyên hàm của hàm số $f(x)$ trên khoảng $K$ nếu:
+
+$$F'(x) = f(x), \quad \forall x \in K$$
+
+Ký hiệu: $\int f(x)dx = F(x) + C$ (với $C$ là hằng số)
+
+</Definition>
+
+<Theorem title="Bảng nguyên hàm cơ bản">
+
+| Hàm số $f(x)$ | Nguyên hàm $\int f(x)dx$ |
+|---------------|--------------------------|
+| $0$ | $C$ |
+| $x^n$ $(n \neq -1)$ | $\frac{x^{n+1}}{n+1} + C$ |
+| $\frac{1}{x}$ | $\ln|x| + C$ |
+| $e^x$ | $e^x + C$ |
+| $\sin x$ | $-\cos x + C$ |
+| $\cos x$ | $\sin x + C$ |
+| $\frac{1}{\cos^2 x}$ | $\tan x + C$ |
+| $\frac{1}{\sin^2 x}$ | $-\cot x + C$ |
+
+**Tính chất:**
+
+- $\int [f(x) + g(x)]dx = \int f(x)dx + \int g(x)dx$
+- $\int kf(x)dx = k\int f(x)dx$ (với $k$ là hằng số)
+
+</Theorem>
+
+## 2. Ví dụ minh họa
+
+<Example title="Ví dụ 1: Nguyên hàm đa thức">
+
+Tính nguyên hàm: $\int (3x^2 - 2x + 5)dx$
+
+**Lời giải:**
+
+$$\int (3x^2 - 2x + 5)dx = \int 3x^2dx - \int 2xdx + \int 5dx$$
+
+$$= 3 \cdot \frac{x^3}{3} - 2 \cdot \frac{x^2}{2} + 5x + C$$
+
+$$= x^3 - x^2 + 5x + C$$
+
+</Example>
+
+<Example title="Ví dụ 2: Nguyên hàm lượng giác">
+
+Tính nguyên hàm: $\int (2\sin x + 3\cos x)dx$
+
+**Lời giải:**
+
+$$\int (2\sin x + 3\cos x)dx = 2\int \sin xdx + 3\int \cos xdx$$
+
+$$= 2(-\cos x) + 3\sin x + C$$
+
+$$= -2\cos x + 3\sin x + C$$
+
+</Example>
+
+<Example title="Ví dụ 3: Nguyên hàm hàm hợp">
+
+Tính nguyên hàm: $\int (2x + 1)^3dx$
+
+**Lời giải:**
+
+Đặt $u = 2x + 1 \Rightarrow du = 2dx \Rightarrow dx = \frac{du}{2}$
+
+$$\int (2x + 1)^3dx = \int u^3 \cdot \frac{du}{2} = \frac{1}{2} \cdot \frac{u^4}{4} + C$$
+
+$$= \frac{u^4}{8} + C = \frac{(2x + 1)^4}{8} + C$$
+
+</Example>
+
+## 3. Thực hành
+
+<Practice title="Bài tập thực hành">
+
+Tính các nguyên hàm sau:
+
+1. $\int (x^3 - 2x + 1)dx$
+2. $\int (4x^2 + 3x - 5)dx$
+3. $\int (\sin x - \cos x)dx$
+4. $\int \frac{1}{x^2}dx$
+5. $\int e^xdx$
+
+**Gợi ý:** Áp dụng bảng nguyên hàm cơ bản và tính chất tuyến tính.
+
+</Practice>
+
+## 4. Vận dụng
+
+<Example title="Tìm nguyên hàm thỏa điều kiện">
+
+Tìm nguyên hàm $F(x)$ của hàm số $f(x) = 2x + 3$, biết $F(1) = 5$.
+
+**Lời giải:**
+
+Tính nguyên hàm:
+
+$$F(x) = \int (2x + 3)dx = x^2 + 3x + C$$
+
+Sử dụng điều kiện $F(1) = 5$:
+
+$$F(1) = 1^2 + 3 \cdot 1 + C = 5$$
+
+$$4 + C = 5 \Rightarrow C = 1$$
+
+Vậy $F(x) = x^2 + 3x + 1$
+
+</Example>
+
+## 5. Trắc nghiệm ôn tập
+
+<Quiz 
+  client:load
+  questions={[
+    {
+      question: "Nguyên hàm của f(x) = x² là:",
+      options: ["x³/3 + C", "2x + C", "x³ + C", "3x² + C"],
+      correct: "x³/3 + C"
+    },
+    {
+      question: "∫ cos x dx bằng:",
+      options: ["sin x + C", "-sin x + C", "cos x + C", "-cos x + C"],
+      correct: "sin x + C"
+    },
+    {
+      question: "∫ (3x² + 2x) dx bằng:",
+      options: ["x³ + x² + C", "6x + 2 + C", "3x³ + 2x² + C", "x³/3 + x² + C"],
+      correct: "x³ + x² + C"
+    },
+    {
+      question: "Nguyên hàm của f(x) = 1/x là:",
+      options: ["ln|x| + C", "1/x² + C", "x + C", "-1/x² + C"],
+      correct: "ln|x| + C"
+    }
+  ]}
+/>
+
+## 6. Bài tập làm thêm
+
+<Exercise title="Bài tập nâng cao">
+
+**Bài 1:** Tính các nguyên hàm:
+
+a) $\int (x + 1)^2dx$
+
+b) $\int \frac{2x + 3}{x}dx$
+
+c) $\int (e^x + \sin x)dx$
+
+**Bài 2:** Tìm nguyên hàm $F(x)$ của $f(x) = 3x^2 - 4x + 1$, biết $F(0) = 2$.
+
+**Bài 3:** Chứng minh rằng nếu $F(x)$ là một nguyên hàm của $f(x)$ thì $F(x) + C$ (với $C$ là hằng số bất kỳ) cũng là nguyên hàm của $f(x)$.
+
+**Bài 4:** Tính: $\int \frac{x^2 + 1}{x}dx$
+
+</Exercise>

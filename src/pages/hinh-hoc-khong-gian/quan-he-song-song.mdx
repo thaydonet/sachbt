@@ -1,0 +1,188 @@
+---
+layout: ../../layouts/LessonLayout.astro
+title: "Quan hệ song song trong không gian"
+topic: "hinh-hoc-khong-gian"
+---
+
+import Definition from '../../components/Definition.jsx';
+import Theorem from '../../components/Theorem.jsx';
+import Example from '../../components/Example.jsx';
+import Practice from '../../components/Practice.jsx';
+import Exercise from '../../components/Exercise.jsx';
+import Quiz from '../../components/Quiz.jsx';
+
+# Quan hệ song song trong không gian
+
+## 1. Lý thuyết
+
+<Definition title="Đường thẳng song song với mặt phẳng">
+
+Đường thẳng $d$ song song với mặt phẳng $(\alpha)$ nếu:
+- $d$ không nằm trong $(\alpha)$
+- $d$ không cắt $(\alpha)$
+
+Ký hiệu: $d \parallel (\alpha)$
+
+</Definition>
+
+<Theorem title="Định lý về đường thẳng song song mặt phẳng">
+
+**Định lý 1:** Nếu đường thẳng $d$ không nằm trong mặt phẳng $(\alpha)$ và $d$ song song với đường thẳng $d'$ nằm trong $(\alpha)$, thì $d$ song song với $(\alpha)$.
+
+$$d \parallel d' \text{ và } d' \subset (\alpha) \Rightarrow d \parallel (\alpha)$$
+
+**Định lý 2 (Định lý Thales):** Nếu ba mặt phẳng đôi một song song cắt hai đường thẳng phân biệt, thì chúng chắn trên hai đường thẳng đó những đoạn thẳng tương ứng tỉ lệ.
+
+</Theorem>
+
+<Definition title="Hai mặt phẳng song song">
+
+Hai mặt phẳng $(\alpha)$ và $(\beta)$ song song nếu chúng không có điểm chung.
+
+Ký hiệu: $(\alpha) \parallel (\beta)$
+
+</Definition>
+
+<Theorem title="Định lý về hai mặt phẳng song song">
+
+**Định lý:** Nếu mặt phẳng $(\alpha)$ chứa hai đường thẳng cắt nhau cùng song song với mặt phẳng $(\beta)$, thì $(\alpha)$ song song với $(\beta)$.
+
+**Tính chất:**
+- Nếu $(\alpha) \parallel (\beta)$ và $d \subset (\alpha)$ thì $d \parallel (\beta)$
+- Nếu $(\alpha) \parallel (\beta)$ và mặt phẳng $(\gamma)$ cắt $(\alpha)$ theo giao tuyến $a$, cắt $(\beta)$ theo giao tuyến $b$ thì $a \parallel b$
+
+</Theorem>
+
+## 2. Ví dụ minh họa
+
+<Example title="Ví dụ 1: Chứng minh đường thẳng song song mặt phẳng">
+
+Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Gọi $M$, $N$ lần lượt là trung điểm của $SA$ và $SB$. Chứng minh $MN \parallel (ABCD)$.
+
+**Lời giải:**
+
+Vì $M$, $N$ là trung điểm của $SA$ và $SB$ nên:
+
+$$MN \parallel AB$$ (theo định lý đường trung bình)
+
+Mà $AB \subset (ABCD)$ và $MN \not\subset (ABCD)$
+
+Do đó: $MN \parallel (ABCD)$
+
+</Example>
+
+<Example title="Ví dụ 2: Chứng minh hai mặt phẳng song song">
+
+Cho hình lập phương $ABCD.A'B'C'D'$. Chứng minh $(ABCD) \parallel (A'B'C'D')$.
+
+**Lời giải:**
+
+Ta có:
+- $AA' \parallel BB' \parallel CC' \parallel DD'$ (cạnh bên hình lập phương)
+- $AB \parallel A'B'$ và $AD \parallel A'D'$
+
+Trong $(ABCD)$ có $AB$ và $AD$ cắt nhau tại $A$
+
+Trong $(A'B'C'D')$ có $A'B'$ và $A'D'$ cắt nhau tại $A'$
+
+Mà $AB \parallel A'B'$ và $AD \parallel A'D'$
+
+Vậy $(ABCD) \parallel (A'B'C'D')$
+
+</Example>
+
+## 3. Thực hành
+
+<Practice title="Bài tập thực hành">
+
+**Bài 1:** Cho tứ diện $ABCD$. Gọi $M$, $N$, $P$ lần lượt là trung điểm của $AB$, $AC$, $AD$. Chứng minh $(MNP) \parallel (BCD)$.
+
+**Bài 2:** Cho hình chóp $S.ABCD$ có đáy là hình vuông. Gọi $O$ là giao điểm của $AC$ và $BD$. Chứng minh $SO \parallel (SAB)$ là sai.
+
+**Bài 3:** Cho hình hộp $ABCD.A'B'C'D'$. Chứng minh:
+
+a) $(ABB'A') \parallel (DCC'D')$
+
+b) $(ABC'D') \parallel (A'B'CD)$
+
+</Practice>
+
+## 4. Vận dụng
+
+<Example title="Bài toán thiết diện">
+
+Cho hình chóp $S.ABCD$ có đáy là hình bình hành. Mặt phẳng $(\alpha)$ qua trung điểm $M$ của $SA$ và song song với $SB$ và $SD$. Xác định thiết diện của hình chóp cắt bởi $(\alpha)$.
+
+**Lời giải:**
+
+Gọi $N$, $P$, $Q$ lần lượt là trung điểm của $SB$, $SC$, $SD$.
+
+Vì $(\alpha)$ qua $M$ và song song với $SB$, $SD$ nên:
+- $(\alpha)$ cắt $SB$ tại $N$ (trung điểm)
+- $(\alpha)$ cắt $SD$ tại $Q$ (trung điểm)
+- $(\alpha)$ cắt $SC$ tại $P$ (trung điểm)
+
+Thiết diện là tứ giác $MNPQ$ (hình bình hành).
+
+</Example>
+
+## 5. Trắc nghiệm ôn tập
+
+<Quiz 
+  client:load
+  questions={[
+    {
+      question: "Cho d // (α). Khẳng định nào đúng?",
+      options: [
+        "d không có điểm chung với (α)",
+        "d nằm trong (α)",
+        "d cắt (α)",
+        "d vuông góc (α)"
+      ],
+      correct: "d không có điểm chung với (α)"
+    },
+    {
+      question: "Trong hình lập phương, số cặp mặt đối diện song song là:",
+      options: ["1", "2", "3", "4"],
+      correct: "3"
+    },
+    {
+      question: "Nếu d // d' và d' ⊂ (α) thì:",
+      options: [
+        "d // (α) hoặc d ⊂ (α)",
+        "d ⊥ (α)",
+        "d cắt (α)",
+        "d trùng d'"
+      ],
+      correct: "d // (α) hoặc d ⊂ (α)"
+    },
+    {
+      question: "Hai mặt phẳng song song khi:",
+      options: [
+        "Không có điểm chung",
+        "Có một điểm chung",
+        "Có hai điểm chung",
+        "Có vô số điểm chung"
+      ],
+      correct: "Không có điểm chung"
+    }
+  ]}
+/>
+
+## 6. Bài tập làm thêm
+
+<Exercise title="Bài tập nâng cao">
+
+**Bài 1:** Cho hình chóp $S.ABCD$ có đáy là hình thang với $AB \parallel CD$. Gọi $M$, $N$ lần lượt là trung điểm của $SA$ và $SB$. Chứng minh:
+
+a) $MN \parallel (ABCD)$
+
+b) $(SAB) \parallel (SCD)$ là sai
+
+**Bài 2:** Cho tứ diện $ABCD$. Gọi $M$, $N$, $P$, $Q$ lần lượt là trung điểm của $AB$, $BC$, $CD$, $DA$. Chứng minh $MNPQ$ là hình bình hành.
+
+**Bài 3:** Cho hình lăng trụ $ABC.A'B'C'$. Mặt phẳng $(\alpha)$ qua $BC$ và song song với $AA'$. Xác định thiết diện.
+
+**Bài 4:** Cho hình chóp $S.ABCD$ có đáy là hình vuông cạnh $a$, $SA$ vuông góc với đáy và $SA = a$. Tính khoảng cách từ $A$ đến $(SBC)$.
+
+</Exercise>

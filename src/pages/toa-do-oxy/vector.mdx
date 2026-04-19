@@ -1,0 +1,223 @@
+---
+layout: ../../layouts/LessonLayout.astro
+title: "Vector trong mặt phẳng Oxy"
+topic: "toa-do-oxy"
+---
+
+import Definition from '../../components/Definition.jsx';
+import Theorem from '../../components/Theorem.jsx';
+import Example from '../../components/Example.jsx';
+import Practice from '../../components/Practice.jsx';
+import Exercise from '../../components/Exercise.jsx';
+import Quiz from '../../components/Quiz.jsx';
+
+# Vector trong mặt phẳng Oxy
+
+## 1. Lý thuyết
+
+<Definition title="Tọa độ vector">
+
+Trong hệ trục tọa độ $Oxy$, vector $\vec{a}$ có tọa độ $(x; y)$ được viết:
+
+$$\vec{a} = (x; y) = x\vec{i} + y\vec{j}$$
+
+Trong đó:
+- $x$ là hoành độ của vector
+- $y$ là tung độ của vector
+- $\vec{i}, \vec{j}$ là các vector đơn vị trên trục $Ox, Oy$
+
+</Definition>
+
+<Theorem title="Các phép toán với vector">
+
+Cho $\vec{a} = (x_1; y_1)$ và $\vec{b} = (x_2; y_2)$, số thực $k$:
+
+**1. Cộng vector:**
+$$\vec{a} + \vec{b} = (x_1 + x_2; y_1 + y_2)$$
+
+**2. Trừ vector:**
+$$\vec{a} - \vec{b} = (x_1 - x_2; y_1 - y_2)$$
+
+**3. Nhân vector với số:**
+$$k\vec{a} = (kx_1; ky_1)$$
+
+**4. Tích vô hướng:**
+$$\vec{a} \cdot \vec{b} = x_1x_2 + y_1y_2$$
+
+**5. Độ dài vector:**
+$$|\vec{a}| = \sqrt{x_1^2 + y_1^2}$$
+
+**6. Góc giữa hai vector:**
+$$\cos(\vec{a}, \vec{b}) = \frac{\vec{a} \cdot \vec{b}}{|\vec{a}| \cdot |\vec{b}|}$$
+
+</Theorem>
+
+<Theorem title="Điều kiện đặc biệt">
+
+**1. Hai vector cùng phương:**
+
+$\vec{a}$ và $\vec{b}$ cùng phương $\Leftrightarrow \frac{x_1}{x_2} = \frac{y_1}{y_2}$ hoặc $x_1y_2 = x_2y_1$
+
+**2. Hai vector vuông góc:**
+
+$\vec{a} \perp \vec{b} \Leftrightarrow \vec{a} \cdot \vec{b} = 0 \Leftrightarrow x_1x_2 + y_1y_2 = 0$
+
+</Theorem>
+
+## 2. Ví dụ minh họa
+
+<Example title="Ví dụ 1: Tọa độ vector">
+
+Cho $A(1; 2)$ và $B(4; 6)$. Tìm tọa độ vector $\vec{AB}$.
+
+**Lời giải:**
+
+$$\vec{AB} = (x_B - x_A; y_B - y_A) = (4 - 1; 6 - 2) = (3; 4)$$
+
+Độ dài vector:
+
+$$|\vec{AB}| = \sqrt{3^2 + 4^2} = \sqrt{9 + 16} = \sqrt{25} = 5$$
+
+</Example>
+
+<Example title="Ví dụ 2: Phép toán vector">
+
+Cho $\vec{a} = (2; 3)$ và $\vec{b} = (-1; 4)$. Tính:
+
+a) $\vec{a} + \vec{b}$
+
+b) $2\vec{a} - 3\vec{b}$
+
+c) $\vec{a} \cdot \vec{b}$
+
+**Lời giải:**
+
+a) $\vec{a} + \vec{b} = (2 + (-1); 3 + 4) = (1; 7)$
+
+b) $2\vec{a} - 3\vec{b} = 2(2; 3) - 3(-1; 4) = (4; 6) - (-3; 12) = (7; -6)$
+
+c) $\vec{a} \cdot \vec{b} = 2 \cdot (-1) + 3 \cdot 4 = -2 + 12 = 10$
+
+</Example>
+
+<Example title="Ví dụ 3: Góc giữa hai vector">
+
+Cho $\vec{a} = (3; 4)$ và $\vec{b} = (4; 3)$. Tính góc giữa hai vector.
+
+**Lời giải:**
+
+Tính tích vô hướng:
+
+$$\vec{a} \cdot \vec{b} = 3 \cdot 4 + 4 \cdot 3 = 12 + 12 = 24$$
+
+Tính độ dài:
+
+$$|\vec{a}| = \sqrt{3^2 + 4^2} = 5$$
+
+$$|\vec{b}| = \sqrt{4^2 + 3^2} = 5$$
+
+$$\cos(\vec{a}, \vec{b}) = \frac{24}{5 \cdot 5} = \frac{24}{25} = 0.96$$
+
+$$(\vec{a}, \vec{b}) = \arccos(0.96) \approx 16.26°$$
+
+</Example>
+
+## 3. Thực hành
+
+<Practice title="Bài tập thực hành">
+
+**Bài 1:** Cho $A(2; 3)$, $B(5; 7)$. Tìm tọa độ và độ dài vector $\vec{AB}$.
+
+**Bài 2:** Cho $\vec{a} = (1; -2)$, $\vec{b} = (3; 4)$. Tính:
+
+a) $\vec{a} + \vec{b}$
+
+b) $3\vec{a} - 2\vec{b}$
+
+c) $|\vec{a}|$ và $|\vec{b}|$
+
+**Bài 3:** Cho $\vec{u} = (2; 3)$, $\vec{v} = (4; -1)$. Kiểm tra xem hai vector có vuông góc không?
+
+**Bài 4:** Tìm $k$ để hai vector $\vec{a} = (k; 2)$ và $\vec{b} = (3; 6)$ cùng phương.
+
+</Practice>
+
+## 4. Vận dụng
+
+<Example title="Bài toán hình học">
+
+Cho tam giác $ABC$ với $A(1; 2)$, $B(4; 3)$, $C(2; 5)$. 
+
+a) Tìm tọa độ trọng tâm $G$
+
+b) Chứng minh tam giác $ABC$ vuông tại $A$
+
+**Lời giải:**
+
+a) Tọa độ trọng tâm:
+
+$$G\left(\frac{x_A + x_B + x_C}{3}; \frac{y_A + y_B + y_C}{3}\right) = \left(\frac{1 + 4 + 2}{3}; \frac{2 + 3 + 5}{3}\right)$$
+
+$$G\left(\frac{7}{3}; \frac{10}{3}\right)$$
+
+b) Tính các vector:
+
+$$\vec{AB} = (3; 1), \quad \vec{AC} = (1; 3)$$
+
+$$\vec{AB} \cdot \vec{AC} = 3 \cdot 1 + 1 \cdot 3 = 3 + 3 = 6 \neq 0$$
+
+Vậy tam giác không vuông tại $A$.
+
+</Example>
+
+## 5. Trắc nghiệm ôn tập
+
+<Quiz 
+  client:load
+  questions={[
+    {
+      question: "Cho A(1; 2), B(4; 6). Tọa độ vector AB là:",
+      options: ["(3; 4)", "(5; 8)", "(4; 3)", "(3; 8)"],
+      correct: "(3; 4)"
+    },
+    {
+      question: "Độ dài vector a = (3; 4) là:",
+      options: ["5", "7", "25", "12"],
+      correct: "5"
+    },
+    {
+      question: "Cho a = (2; 3), b = (1; -1). Tích vô hướng a·b bằng:",
+      options: ["-1", "1", "5", "-5"],
+      correct: "-1"
+    },
+    {
+      question: "Hai vector a = (2; 3) và b = (4; 6) có quan hệ:",
+      options: ["Cùng phương", "Vuông góc", "Bằng nhau", "Không có quan hệ"],
+      correct: "Cùng phương"
+    }
+  ]}
+/>
+
+## 6. Bài tập làm thêm
+
+<Exercise title="Bài tập nâng cao">
+
+**Bài 1:** Cho $\vec{a} = (2; -3)$, $\vec{b} = (1; 4)$. Tìm vector $\vec{c}$ sao cho:
+
+$$2\vec{a} + 3\vec{c} = \vec{b}$$
+
+**Bài 2:** Cho tam giác $ABC$ với $A(1; 1)$, $B(4; 2)$, $C(3; 5)$. Tìm tọa độ:
+
+a) Trọng tâm $G$
+
+b) Trực tâm $H$ (giao điểm các đường cao)
+
+**Bài 3:** Tìm tọa độ điểm $M$ trên trục $Ox$ sao cho $MA = MB$ với $A(2; 3)$, $B(6; 1)$.
+
+**Bài 4:** Cho $\vec{a} = (m; 2)$, $\vec{b} = (3; m-1)$. Tìm $m$ để:
+
+a) $\vec{a}$ và $\vec{b}$ cùng phương
+
+b) $\vec{a}$ và $\vec{b}$ vuông góc
+
+</Exercise>

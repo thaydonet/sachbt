@@ -1,0 +1,203 @@
+---
+const menuCategories = [
+  {
+    name: 'Đại số',
+    icon: '📐',
+    topics: [
+      { name: 'Phương trình bậc nhất', url: '/phuong-trinh/phuong-trinh-bac-nhat' },
+      { name: 'Phương trình bậc hai', url: '/phuong-trinh/phuong-trinh-bac-hai' },
+      { name: 'Hệ phương trình', url: '/phuong-trinh/he-phuong-trinh' },
+    ]
+  },
+  {
+    name: 'Giải tích',
+    icon: '📈',
+    topics: [
+      { name: 'Khảo sát hàm số', url: '/khao-sat-ham-so/dao-ham' },
+      { name: 'Đạo hàm', url: '/khao-sat-ham-so/dao-ham' },
+      { name: 'Nguyên hàm', url: '/nguyen-ham-tich-phan/nguyen-ham' },
+      { name: 'Tích phân', url: '/nguyen-ham-tich-phan/tich-phan-xac-dinh' },
+      { name: 'Lượng giác', url: '/luong-giac/cong-thuc-co-ban' },
+    ]
+  },
+  {
+    name: 'Hình học',
+    icon: '🔺',
+    topics: [
+      { name: 'Hình học không gian', url: '/hinh-hoc-khong-gian/quan-he-song-song' },
+      { name: 'QH song song', url: '/hinh-hoc-khong-gian/quan-he-song-song' },
+      { name: 'Toạ độ Oxy', url: '/toa-do-oxy/vector' },
+      { name: 'Toạ độ Oxyz', url: '/toa-do-oxyz/vector-khong-gian' },
+    ]
+  },
+  {
+    name: 'Xác suất',
+    icon: '🎲',
+    topics: [
+      { name: 'Xác suất', url: '/xac-suat/khai-niem-co-ban' },
+      { name: 'Biến cố', url: '/xac-suat/bien-co' },
+      { name: 'Trung bình', url: '/thong-ke/so-trung-binh' },
+      { name: 'Phương sai', url: '/thong-ke/phuong-sai' },
+    ]
+  },
+];
+---
+
+<nav class="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200 shadow-sm transition-all duration-300">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      
+      <!-- Logo -->
+      <div class="flex-shrink-0 flex items-center">
+        <a href="/" class="flex items-center gap-2 group">
+          <div class="w-8 h-8 bg-gradient-to-br from-indigo-500 to-purple-600 text-white rounded-lg flex items-center justify-center font-bold text-lg shadow-md group-hover:scale-105 transition-transform duration-300">
+            Σ
+          </div>
+          <span class="font-extrabold text-xl bg-clip-text text-transparent bg-gradient-to-r from-indigo-600 to-purple-600 tracking-tight hidden sm:block">
+            Toán Phổ Thông
+          </span>
+        </a>
+      </div>
+
+      <!-- Desktop Menu -->
+      <div class="hidden md:flex items-center space-x-1 lg:space-x-4">
+        <a href="/" class="px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors">
+          Trang chủ
+        </a>
+        
+        {menuCategories.map((category, index) => (
+          <div class="relative group">
+            <button class="flex items-center gap-1.5 px-3 py-2 rounded-md text-sm font-medium text-slate-700 hover:text-indigo-600 hover:bg-indigo-50 transition-colors focus:outline-none">
+              <span class="text-base">{category.icon}</span>
+              <span>{category.name}</span>
+              <svg class="w-4 h-4 opacity-50 group-hover:opacity-100 transition-opacity" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+              </svg>
+            </button>
+            
+            <div class="absolute left-0 mt-1 w-56 rounded-xl shadow-lg bg-white ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 transform origin-top-left scale-95 group-hover:scale-100 z-50 overflow-hidden">
+              <div class="py-2 absolute inset-0 bg-gradient-to-b from-indigo-50/50 to-transparent pointer-events-none"></div>
+              <div class="py-1 relative">
+                {category.topics.map(topic => (
+                  <a href={topic.url} class="block px-4 py-2.5 text-sm text-slate-600 hover:bg-indigo-50 hover:text-indigo-700 transition-colors relative group/item">
+                    <span class="relative z-10">{topic.name}</span>
+                    <div class="absolute left-0 w-1 h-0 top-1/2 -translate-y-1/2 bg-indigo-500 transition-all duration-300 group-hover/item:h-full group-hover/item:top-0 group-hover/item:translate-y-0"></div>
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      <!-- Mobile menu button -->
+      <div class="flex items-center md:hidden">
+        <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 hover:text-indigo-600 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500 transition-colors">
+          <span class="sr-only">Mở menu</span>
+          <svg id="icon-menu" class="block h-6 w-6 transition-transform duration-300" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-close" class="hidden h-6 w-6 transition-transform duration-300 transform rotate-90" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile Menu Panel -->
+  <div id="mobile-menu" class="md:hidden hidden bg-white border-t border-slate-100 shadow-xl absolute w-full left-0 origin-top animate-fade-in-down max-h-[calc(100vh-4rem)] overflow-y-auto">
+    <div class="px-4 py-3 space-y-1">
+      <a href="/" class="block px-3 py-2.5 rounded-lg text-base font-medium text-slate-900 bg-slate-50 border border-slate-100">
+        🏠 Trang chủ
+      </a>
+      
+      {menuCategories.map((category, index) => (
+        <div class="mobile-dropdown space-y-1">
+          <button class="mobile-dropdown-toggle w-full flex justify-between items-center px-3 py-2.5 rounded-lg text-base font-medium text-slate-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors">
+            <div class="flex items-center gap-2">
+              <span>{category.icon}</span>
+              <span>{category.name}</span>
+            </div>
+            <svg class="w-5 h-5 opacity-70 transition-transform duration-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+          <div class="mobile-dropdown-menu hidden pl-8 pr-3 py-2 space-y-2 bg-slate-50/50 rounded-b-xl border-l-2 border-indigo-100 ml-4 animate-fade-in">
+            {category.topics.map(topic => (
+              <a href={topic.url} class="block px-3 py-1.5 text-sm font-medium text-slate-600 hover:text-indigo-600 transition-colors">
+                {topic.name}
+              </a>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</nav>
+
+<style>
+  @keyframes fadeInDown {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  .animate-fade-in-down {
+    animation: fadeInDown 0.3s ease-out forwards;
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.3s ease-out forwards;
+  }
+</style>
+
+<script>
+  const btn = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  const iconMenu = document.getElementById('icon-menu');
+  const iconClose = document.getElementById('icon-close');
+
+  if (btn && menu && iconMenu && iconClose) {
+    btn.addEventListener('click', () => {
+      menu.classList.toggle('hidden');
+      iconMenu.classList.toggle('hidden');
+      if (!iconMenu.classList.contains('hidden')) {
+        iconMenu.classList.add('rotate-0');
+        iconMenu.classList.remove('-rotate-90');
+      } else {
+        iconMenu.classList.remove('rotate-0');
+        iconMenu.classList.add('-rotate-90');
+      }
+      
+      iconClose.classList.toggle('hidden');
+      if (!iconClose.classList.contains('hidden')) {
+        iconClose.classList.add('rotate-0');
+        iconClose.classList.remove('rotate-90');
+      } else {
+        iconClose.classList.remove('rotate-0');
+        iconClose.classList.add('rotate-90');
+      }
+    });
+  }
+
+  const toggles = document.querySelectorAll('.mobile-dropdown-toggle');
+  toggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const dropdownMenu = toggle.nextElementSibling;
+      const arrow = toggle.querySelector('svg');
+      
+      if (dropdownMenu) {
+        dropdownMenu.classList.toggle('hidden');
+      }
+      if (arrow) {
+        if (dropdownMenu && !dropdownMenu.classList.contains('hidden')) {
+          arrow.classList.add('rotate-180');
+        } else {
+          arrow.classList.remove('rotate-180');
+        }
+      }
+    });
+  });
+</script>

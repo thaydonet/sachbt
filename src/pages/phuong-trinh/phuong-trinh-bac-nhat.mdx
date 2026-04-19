@@ -1,0 +1,163 @@
+---
+layout: ../../layouts/LessonLayout.astro
+title: "Phương trình bậc nhất"
+topic: "phuong-trinh"
+---
+
+import Definition from '../../components/Definition.jsx';
+import Theorem from '../../components/Theorem.jsx';
+import Example from '../../components/Example.jsx';
+import Practice from '../../components/Practice.jsx';
+import Exercise from '../../components/Exercise.jsx';
+import Quiz from '../../components/Quiz.jsx';
+
+# Phương trình bậc nhất
+
+## 1. Lý thuyết
+
+<Definition title="Định nghĩa phương trình bậc nhất">
+
+Phương trình bậc nhất một ẩn là phương trình có dạng:
+
+$$ax + b = 0$$
+
+Trong đó:
+- $x$ là ẩn số
+- $a, b$ là các hệ số ($a \neq 0$)
+
+</Definition>
+
+<Theorem title="Công thức nghiệm">
+
+Phương trình $ax + b = 0$ (với $a \neq 0$) có nghiệm duy nhất:
+
+$$x = -\frac{b}{a}$$
+
+**Chứng minh:**
+
+$$ax + b = 0$$
+$$ax = -b$$
+$$x = -\frac{b}{a}$$
+
+</Theorem>
+
+## 2. Ví dụ minh họa
+
+<Example title="Ví dụ 1: Giải phương trình đơn giản">
+
+Giải phương trình: $2x + 6 = 0$
+
+**Lời giải:**
+
+Ta có: $a = 2$, $b = 6$
+
+Áp dụng công thức:
+
+$$x = -\frac{b}{a} = -\frac{6}{2} = -3$$
+
+Vậy phương trình có nghiệm $x = -3$
+
+</Example>
+
+<Example title="Ví dụ 2: Phương trình phức tạp hơn">
+
+Giải phương trình: $3x - 5 = 2x + 7$
+
+**Lời giải:**
+
+Chuyển vế và rút gọn:
+
+$$3x - 2x = 7 + 5$$
+$$x = 12$$
+
+Vậy phương trình có nghiệm $x = 12$
+
+</Example>
+
+## 3. Thực hành
+
+<Practice title="Bài tập thực hành">
+
+Hãy giải các phương trình sau:
+
+1. $5x + 10 = 0$
+2. $-3x + 9 = 0$
+3. $4x - 8 = 2x + 4$
+4. $\frac{x}{2} + 3 = 5$
+
+**Gợi ý:**
+- Xác định hệ số $a$ và $b$
+- Áp dụng công thức nghiệm
+- Kiểm tra lại kết quả bằng cách thế vào phương trình ban đầu
+
+</Practice>
+
+## 4. Vận dụng
+
+<Example title="Bài toán thực tế">
+
+Một cửa hàng bán áo, giá mỗi chiếc áo là 150,000 đồng. Hôm nay cửa hàng giảm giá 20% và bạn có thêm phiếu giảm giá 30,000 đồng. Hỏi bạn phải trả bao nhiêu tiền?
+
+**Lời giải:**
+
+Gọi $x$ là số tiền phải trả (đồng)
+
+Giá sau khi giảm 20%: $150000 \times 0.8 = 120000$ (đồng)
+
+Sau khi dùng phiếu giảm giá:
+
+$$x = 120000 - 30000 = 90000$$
+
+Vậy bạn phải trả 90,000 đồng.
+
+</Example>
+
+## 5. Trắc nghiệm ôn tập
+
+<Quiz 
+  client:load
+  questions={[
+    {
+      question: "Nghiệm của phương trình 3x - 9 = 0 là:",
+      options: ["x = 3", "x = -3", "x = 6", "x = -6"],
+      correct: "x = 3"
+    },
+    {
+      question: "Phương trình nào sau đây có nghiệm x = 2?",
+      options: ["2x + 4 = 0", "3x - 6 = 0", "x + 2 = 0", "4x + 8 = 0"],
+      correct: "3x - 6 = 0"
+    },
+    {
+      question: "Giải phương trình 5x + 15 = 0, ta được:",
+      options: ["x = 3", "x = -3", "x = 5", "x = -5"],
+      correct: "x = -3"
+    },
+    {
+      question: "Phương trình 2x - 4 = x + 1 có nghiệm là:",
+      options: ["x = 3", "x = 5", "x = 2", "x = 4"],
+      correct: "x = 5"
+    }
+  ]}
+/>
+
+## 6. Bài tập làm thêm
+
+<Exercise title="Bài tập nâng cao">
+
+**Bài 1:** Giải các phương trình sau:
+
+a) $7x - 14 = 0$
+
+b) $\frac{2x}{3} + 4 = 10$
+
+c) $5(x - 2) = 3(x + 4)$
+
+d) $\frac{x + 1}{2} - \frac{x - 1}{3} = 1$
+
+**Bài 2:** Tìm giá trị của $m$ để phương trình $(m - 2)x + 3 = 0$ có nghiệm $x = 1$
+
+**Bài 3:** Một người đi xe đạp từ A đến B với vận tốc 15 km/h. Sau đó người đó quay về A với vận tốc 12 km/h. Biết tổng thời gian đi và về là 3 giờ. Tính quãng đường AB.
+
+**Bài 4:** Giải và biện luận phương trình: $(m - 1)x + 2m = 3$ theo tham số $m$
+
+</Exercise>

@@ -1,0 +1,206 @@
+---
+layout: ../../layouts/LessonLayout.astro
+title: "Vector trong không gian Oxyz"
+topic: "toa-do-oxyz"
+---
+
+import Definition from '../../components/Definition.jsx';
+import Theorem from '../../components/Theorem.jsx';
+import Example from '../../components/Example.jsx';
+import Practice from '../../components/Practice.jsx';
+import Exercise from '../../components/Exercise.jsx';
+import Quiz from '../../components/Quiz.jsx';
+
+# Vector trong không gian Oxyz
+
+## 1. Lý thuyết
+
+<Definition title="Hệ tọa độ Oxyz">
+
+Hệ tọa độ $Oxyz$ trong không gian gồm:
+- Điểm gốc $O$
+- Ba trục tọa độ $Ox$, $Oy$, $Oz$ vuông góc từng đôi một
+- Ba vector đơn vị $\vec{i}$, $\vec{j}$, $\vec{k}$ trên các trục
+
+Vector $\vec{a}$ có tọa độ $(x; y; z)$ được viết:
+
+$$\vec{a} = x\vec{i} + y\vec{j} + z\vec{k} = (x; y; z)$$
+
+Điểm $M$ có tọa độ $(x; y; z)$: $M(x; y; z)$
+
+</Definition>
+
+<Theorem title="Các phép toán với vector trong không gian">
+
+Cho $\vec{a} = (x_1; y_1; z_1)$, $\vec{b} = (x_2; y_2; z_2)$, số thực $k$:
+
+**1. Cộng, trừ vector:**
+$$\vec{a} \pm \vec{b} = (x_1 \pm x_2; y_1 \pm y_2; z_1 \pm z_2)$$
+
+**2. Nhân vector với số:**
+$$k\vec{a} = (kx_1; ky_1; kz_1)$$
+
+**3. Tích vô hướng:**
+$$\vec{a} \cdot \vec{b} = x_1x_2 + y_1y_2 + z_1z_2$$
+
+**4. Độ dài vector:**
+$$|\vec{a}| = \sqrt{x_1^2 + y_1^2 + z_1^2}$$
+
+**5. Khoảng cách hai điểm:**
+
+Cho $A(x_A; y_A; z_A)$, $B(x_B; y_B; z_B)$:
+
+$$AB = |\vec{AB}| = \sqrt{(x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2}$$
+
+</Theorem>
+
+<Theorem title="Tích có hướng (tích vector)">
+
+Tích có hướng của $\vec{a} = (x_1; y_1; z_1)$ và $\vec{b} = (x_2; y_2; z_2)$:
+
+$$\vec{a} \times \vec{b} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ x_1 & y_1 & z_1 \\ x_2 & y_2 & z_2 \end{vmatrix}$$
+
+$$= (y_1z_2 - z_1y_2)\vec{i} - (x_1z_2 - z_1x_2)\vec{j} + (x_1y_2 - y_1x_2)\vec{k}$$
+
+**Tính chất:**
+- $\vec{a} \times \vec{b}$ vuông góc với cả $\vec{a}$ và $\vec{b}$
+- $|\vec{a} \times \vec{b}| = |\vec{a}| \cdot |\vec{b}| \cdot \sin(\vec{a}, \vec{b})$
+- $\vec{a}$ và $\vec{b}$ cùng phương $\Leftrightarrow \vec{a} \times \vec{b} = \vec{0}$
+
+</Theorem>
+
+## 2. Ví dụ minh họa
+
+<Example title="Ví dụ 1: Tọa độ vector và khoảng cách">
+
+Cho $A(1; 2; 3)$ và $B(4; 6; 5)$. Tìm:
+
+a) Tọa độ vector $\vec{AB}$
+
+b) Độ dài $AB$
+
+**Lời giải:**
+
+a) $\vec{AB} = (4-1; 6-2; 5-3) = (3; 4; 2)$
+
+b) $AB = \sqrt{3^2 + 4^2 + 2^2} = \sqrt{9 + 16 + 4} = \sqrt{29}$
+
+</Example>
+
+<Example title="Ví dụ 2: Tích vô hướng và góc">
+
+Cho $\vec{a} = (1; 2; 2)$ và $\vec{b} = (2; -1; 1)$. Tính góc giữa hai vector.
+
+**Lời giải:**
+
+Tích vô hướng:
+
+$$\vec{a} \cdot \vec{b} = 1 \cdot 2 + 2 \cdot (-1) + 2 \cdot 1 = 2 - 2 + 2 = 2$$
+
+Độ dài:
+
+$$|\vec{a}| = \sqrt{1^2 + 2^2 + 2^2} = \sqrt{9} = 3$$
+
+$$|\vec{b}| = \sqrt{2^2 + (-1)^2 + 1^2} = \sqrt{6}$$
+
+$$\cos(\vec{a}, \vec{b}) = \frac{2}{3\sqrt{6}} = \frac{2\sqrt{6}}{18} = \frac{\sqrt{6}}{9}$$
+
+</Example>
+
+<Example title="Ví dụ 3: Tích có hướng">
+
+Cho $\vec{a} = (1; 2; 3)$ và $\vec{b} = (2; -1; 1)$. Tính $\vec{a} \times \vec{b}$.
+
+**Lời giải:**
+
+$$\vec{a} \times \vec{b} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ 1 & 2 & 3 \\ 2 & -1 & 1 \end{vmatrix}$$
+
+$$= \vec{i}(2 \cdot 1 - 3 \cdot (-1)) - \vec{j}(1 \cdot 1 - 3 \cdot 2) + \vec{k}(1 \cdot (-1) - 2 \cdot 2)$$
+
+$$= \vec{i}(2 + 3) - \vec{j}(1 - 6) + \vec{k}(-1 - 4)$$
+
+$$= 5\vec{i} + 5\vec{j} - 5\vec{k} = (5; 5; -5)$$
+
+</Example>
+
+## 3. Thực hành
+
+<Practice title="Bài tập thực hành">
+
+**Bài 1:** Cho $A(2; -1; 3)$, $B(5; 2; 1)$. Tìm tọa độ và độ dài $\vec{AB}$.
+
+**Bài 2:** Cho $\vec{a} = (1; -2; 3)$, $\vec{b} = (2; 1; -1)$. Tính:
+
+a) $\vec{a} + \vec{b}$
+
+b) $2\vec{a} - 3\vec{b}$
+
+c) $\vec{a} \cdot \vec{b}$
+
+**Bài 3:** Cho $\vec{u} = (2; 1; -1)$, $\vec{v} = (1; 3; 2)$. Tính $\vec{u} \times \vec{v}$.
+
+**Bài 4:** Tìm tọa độ điểm $M$ trên trục $Oz$ sao cho $MA = MB$ với $A(1; 2; 3)$, $B(3; 4; 1)$.
+
+</Practice>
+
+## 4. Vận dụng
+
+<Example title="Diện tích tam giác">
+
+Cho tam giác $ABC$ với $A(1; 0; 0)$, $B(0; 1; 0)$, $C(0; 0; 1)$. Tính diện tích tam giác.
+
+**Lời giải:**
+
+$$\vec{AB} = (-1; 1; 0), \quad \vec{AC} = (-1; 0; 1)$$
+
+$$\vec{AB} \times \vec{AC} = \begin{vmatrix} \vec{i} & \vec{j} & \vec{k} \\ -1 & 1 & 0 \\ -1 & 0 & 1 \end{vmatrix}$$
+
+$$= \vec{i}(1 - 0) - \vec{j}(-1 - 0) + \vec{k}(0 + 1) = (1; 1; 1)$$
+
+$$|\vec{AB} \times \vec{AC}| = \sqrt{1^2 + 1^2 + 1^2} = \sqrt{3}$$
+
+$$S_{ABC} = \frac{1}{2}|\vec{AB} \times \vec{AC}| = \frac{\sqrt{3}}{2}$$
+
+</Example>
+
+## 5. Trắc nghiệm ôn tập
+
+<Quiz 
+  client:load
+  questions={[
+    {
+      question: "Cho A(1; 2; 3), B(4; 6; 7). Tọa độ vector AB là:",
+      options: ["(3; 4; 4)", "(5; 8; 10)", "(3; 4; 10)", "(4; 4; 4)"],
+      correct: "(3; 4; 4)"
+    },
+    {
+      question: "Độ dài vector a = (2; 2; 1) là:",
+      options: ["3", "5", "9", "√5"],
+      correct: "3"
+    },
+    {
+      question: "Cho a = (1; 2; 3), b = (2; -1; 1). Tích vô hướng a·b bằng:",
+      options: ["3", "5", "1", "0"],
+      correct: "3"
+    },
+    {
+      question: "Khoảng cách từ O(0; 0; 0) đến M(3; 4; 0) là:",
+      options: ["5", "7", "25", "√7"],
+      correct: "5"
+    }
+  ]}
+/>
+
+## 6. Bài tập làm thêm
+
+<Exercise title="Bài tập nâng cao">
+
+**Bài 1:** Cho $A(1; 2; 3)$, $B(2; -1; 1)$, $C(3; 1; -1)$. Tìm tọa độ điểm $D$ sao cho $ABCD$ là hình bình hành.
+
+**Bài 2:** Cho tứ diện $ABCD$ với $A(1; 0; 0)$, $B(0; 1; 0)$, $C(0; 0; 1)$, $D(1; 1; 1)$. Tính thể tích tứ diện.
+
+**Bài 3:** Tìm tọa độ vector $\vec{n}$ vuông góc với cả $\vec{a} = (1; 2; 1)$ và $\vec{b} = (2; 1; -1)$.
+
+**Bài 4:** Cho $\vec{a} = (m; 1; 2)$, $\vec{b} = (1; m; -1)$. Tìm $m$ để $\vec{a} \perp \vec{b}$.
+
+</Exercise>
