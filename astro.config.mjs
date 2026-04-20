@@ -6,11 +6,11 @@ import rehypeKatex from 'rehype-katex';
 import cloudflare from '@astrojs/cloudflare';
 
 import tailwind from '@astrojs/tailwind';
-import sitemap from '@astrojs/sitemap';
+// import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://sach.booktoan.com',
-  output: 'server',
+  output: 'hybrid',
   adapter: cloudflare(),
   integrations: [
     react(),
@@ -19,6 +19,6 @@ export default defineConfig({
       rehypePlugins: [rehypeKatex],
     }),
     tailwind(),
-    sitemap()
+    // sitemap() // Tạm thời tắt do xung đột với hybrid mode
   ],
 });
