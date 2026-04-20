@@ -1,0 +1,20 @@
+{
+  "version": 1,
+  "include": [
+    "/*"
+  ],
+  "exclude": [
+    "/",
+    "/_astro/*",
+    "/favicon.svg",
+    "/hinh-hoc-khong-gian/*",
+    "/khao-sat-ham-so/*",
+    "/luong-giac/*",
+    "/nguyen-ham-tich-phan/*",
+    "/phuong-trinh/*",
+    "/thong-ke/*",
+    "/toa-do-oxy/*",
+    "/toa-do-oxyz/*",
+    "/xac-suat/*"
+  ]
+}
