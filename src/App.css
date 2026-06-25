@@ -94,6 +94,41 @@ html, body, #root {
   white-space: nowrap;
 }
 
+.dim-toggle {
+  background: var(--bg-header);
+  border: 1px solid var(--border-header);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  transition: all 0.2s;
+  font-family: inherit;
+  color: var(--text-secondary);
+}
+
+.dim-toggle:hover {
+  border-color: var(--text-secondary);
+}
+
+.dim-icon {
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.dim-icon.active {
+  color: var(--text-primary);
+  background: rgba(99, 102, 241, 0.15);
+}
+
+.dim-divider {
+  opacity: 0.3;
+}
+
 .theme-toggle {
   background: none;
   border: 1px solid var(--border-header);

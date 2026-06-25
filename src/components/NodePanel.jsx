@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import remarkMath from 'remark-math';
 import rehypeKatex from 'rehype-katex';
+import rehypeRaw from 'rehype-raw';
 import lessons from '../data/lessons';
 import './NodePanel.css';
 
@@ -15,14 +16,6 @@ const TYPE_COLORS = {
   branch: '#6366f1',
   leaf: '#22d3ee'
 };
-
-function KatexText({ text }) {
-  return (
-    <ReactMarkdown remarkPlugins={[remarkMath]} rehypePlugins={[rehypeKatex]}>
-      {text}
-    </ReactMarkdown>
-  );
-}
 
 export default function NodePanel({ node, onClose }) {
   if (!node) return null;
@@ -53,50 +46,11 @@ export default function NodePanel({ node, onClose }) {
             <div className="panel-content markdown-body">
               <ReactMarkdown
                 remarkPlugins={[remarkMath]}
-                rehypePlugins={[rehypeKatex]}
+                rehypePlugins={[rehypeRaw, rehypeKatex]}
               >
                 {mdContent}
               </ReactMarkdown>
             </div>
-          </section>
-        )}
-
-        {isLeaf && node.video && (
-          <section className="panel-section">
-            <div className="section-icon">🎬</div>
-            <h3>Video bài giảng</h3>
-            <a
-              href={node.video}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="video-link"
-            >
-              ▶ Xem video trên YouTube
-            </a>
-          </section>
-        )}
-
-        {isLeaf && node.questions && node.questions.length > 0 && (
-          <section className="panel-section">
-            <div className="section-icon">❓</div>
-            <h3>Câu hỏi liên quan</h3>
-            <ul className="panel-list">
-              {node.questions.map((q, i) => (
-                <li key={i}><KatexText text={q} /></li>
-              ))}
-            </ul>
-          </section>
-        )}
-
-        {isLeaf && node.exams && node.exams.length > 0 && (
-          <section className="panel-section">
-            <div className="section-icon">📝</div>
-            <h3>Đề thi liên quan</h3>
-            <ul className="panel-list">
-              {node.exams.map((e, i) => (
-                <li key={i}>{e}</li>
-              ))}
-            </ul>
           </section>
         )}
 

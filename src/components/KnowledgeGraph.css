@@ -22,6 +22,14 @@
   display: block;
 }
 
+.graph-3d {
+  touch-action: none;
+}
+
+.graph-3d canvas {
+  display: block;
+}
+
 .graph-link {
   opacity: 0.5;
   transition: opacity 0.3s;
