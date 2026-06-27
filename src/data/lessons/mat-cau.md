@@ -38,3 +38,11 @@ Cho mặt cầu $(S)$ và đường thẳng $d$. Gọi $d' = d(I, d)$:
 - $d' < R$: $d$ cắt $(S)$ tại 2 điểm
 - $d' = R$: $d$ tiếp xúc $(S)$
 - $d' > R$: $d$ không cắt $(S)$
+
+
+### Ví dụ minh họa
+**Bài tập:** Xác định tâm và bán kính của mặt cầu có phương trình $x^2 + y^2 + z^2 - 4x + 2y - 6z + 5 = 0$.
+**Lời giải:**
+Phương trình có dạng $x^2 + y^2 + z^2 - 2ax - 2by - 2cz + d = 0$.
+- Tâm $I(a; b; c)$: $a = 2, b = -1, c = 3 \Rightarrow I(2; -1; 3)$.
+- Bán kính $R = \sqrt{a^2 + b^2 + c^2 - d} = \sqrt{2^2 + (-1)^2 + 3^2 - 5} = \sqrt{4 + 1 + 9 - 5} = \sqrt{9} = 3$.

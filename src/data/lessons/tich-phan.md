@@ -32,3 +32,11 @@ $$
 $$
 
 Thường dùng cho dạng $\int P(x) \cdot e^x \, dx$, $\int P(x) \cdot \sin x \, dx$, $\int P(x) \cdot \ln x \, dx$.
+
+
+### Ví dụ minh họa
+**Bài tập:** Tính tích phân $I = \int_0^1 (3x^2 - 2x) dx$.
+**Lời giải:**
+- Tìm nguyên hàm: $\int (3x^2 - 2x) dx = x^3 - x^2$.
+- Áp dụng công thức Newton-Leibniz:
+  $I = (x^3 - x^2) \Big|_0^1 = (1^3 - 1^2) - (0^3 - 0^2) = 0 - 0 = 0$.

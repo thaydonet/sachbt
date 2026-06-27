@@ -1,17 +1,25 @@
+/* ── CSS Variables ───────────────────────────────────────────────────── */
 :root {
-  --hint-bg: rgba(255,255,255,0.7);
-  --hint-border: rgba(0,0,0,0.06);
-  --hint-color: rgba(0,0,0,0.35);
-  --label-shadow: 0 1px 4px rgba(255,255,255,0.6), 0 0 8px rgba(255,255,255,0.3);
+  --hint-bg: rgba(255,255,255,0.82);
+  --hint-border: rgba(67,56,202,0.18);
+  --hint-color: rgba(30,27,75,0.6);
+  --label-shadow: 0 1px 4px rgba(255,255,255,0.8), 0 0 10px rgba(255,255,255,0.5);
+  --legend-bg: rgba(255,255,255,0.82);
+  --legend-border: rgba(67,56,202,0.18);
+  --legend-color: rgba(30,27,75,0.7);
 }
 
 [data-theme="dark"] {
-  --hint-bg: rgba(10,10,26,0.7);
-  --hint-border: rgba(255,255,255,0.08);
-  --hint-color: rgba(255,255,255,0.4);
+  --hint-bg: rgba(10,10,26,0.75);
+  --hint-border: rgba(129,140,248,0.22);
+  --hint-color: rgba(200,200,230,0.55);
   --label-shadow: 0 1px 4px rgba(0,0,0,0.8), 0 0 8px rgba(0,0,0,0.4);
+  --legend-bg: rgba(13,13,26,0.78);
+  --legend-border: rgba(129,140,248,0.2);
+  --legend-color: rgba(200,200,230,0.65);
 }
 
+/* ── Graph containers ────────────────────────────────────────────────── */
 .graph-container {
   width: 100%;
   height: 100%;
@@ -30,6 +38,7 @@
   display: block;
 }
 
+/* ── 2D graph elements ───────────────────────────────────────────────── */
 .graph-link {
   opacity: 0.5;
   transition: opacity 0.3s;
@@ -46,14 +55,16 @@
   text-shadow: var(--label-shadow);
 }
 
+/* ── Hint bar (bottom, both modes) ──────────────────────────────────── */
 .graph-hint {
   position: absolute;
-  bottom: 24px;
+  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--hint-bg);
-  backdrop-filter: blur(8px);
-  padding: 8px 20px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  padding: 7px 22px;
   border-radius: 20px;
   border: 1px solid var(--hint-border);
   font-size: 12px;
@@ -61,4 +72,41 @@
   white-space: nowrap;
   pointer-events: none;
   user-select: none;
+  letter-spacing: 0.03em;
+  font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+}
+
+/* ── Legend panel (top-left, 3D mode) ───────────────────────────────── */
+.graph-legend-3d {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--legend-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--legend-border);
+  border-radius: 12px;
+  padding: 7px 16px;
+  pointer-events: none;
+  user-select: none;
+}
+
+.legend-dot {
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.legend-label {
+  font-size: 11px;
+  color: var(--legend-color);
+  letter-spacing: 0.04em;
+  font-family: 'Segoe UI', 'Inter', system-ui, sans-serif;
+  margin-right: 6px;
+  font-weight: 500;
 }

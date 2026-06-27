@@ -63,3 +63,10 @@ Cho $d$ có $\vec{u}$, $(P)$ có $\vec{n}$:
 
 - $d \perp (P)$ ⇔ $\vec{u}$ cùng phương $\vec{n}$
 - $d \parallel (P)$ ⇔ $\vec{u} \perp \vec{n}$ và $M \notin (P)$
+
+
+### Ví dụ minh họa
+**Bài tập:** Viết phương trình tham số của đường thẳng $d$ đi qua điểm $A(1; 0; -2)$ và nhận $\vec{u} = (2; 3; -1)$ làm vectơ chỉ phương.
+**Lời giải:**
+Phương trình tham số của đường thẳng $d$:
+$\begin{cases} x = x_0 + at \\ y = y_0 + bt \\ z = z_0 + ct \end{cases} \Rightarrow \begin{cases} x = 1 + 2t \\ y = 0 + 3t \\ z = -2 - t \end{cases} \quad (t \in \mathbb{R})$

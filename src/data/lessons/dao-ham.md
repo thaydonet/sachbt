@@ -46,3 +46,14 @@ Phương trình tiếp tuyến:
 $$
 y - y_0 = f'(x_0)(x - x_0)
 $$
+
+
+### Ví dụ minh họa
+**Bài tập:** Tính đạo hàm của hàm số $y = x^3 - 2x^2 + 5x - 1$.
+**Lời giải:**
+Áp dụng công thức đạo hàm cơ bản: $(x^n)' = n x^{n-1}$ và $(c)' = 0$.
+- Đạo hàm của $x^3$ là $3x^2$.
+- Đạo hàm của $-2x^2$ là $-4x$.
+- Đạo hàm của $5x$ là $5$.
+- Đạo hàm của $-1$ là $0$.
+Suy ra $y' = 3x^2 - 4x + 5$.

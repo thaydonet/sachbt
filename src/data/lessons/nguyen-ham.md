@@ -60,3 +60,10 @@ $$
 
 - $\int [f(x) \pm g(x)] \, dx = \int f(x) \, dx \pm \int g(x) \, dx$
 - $\int k \cdot f(x) \, dx = k \cdot \int f(x) \, dx$
+
+
+### Ví dụ minh họa
+**Bài tập:** Tìm nguyên hàm của hàm số $f(x) = 2x + \cos x$.
+**Lời giải:**
+Áp dụng tính chất nguyên hàm của tổng và các nguyên hàm cơ bản:
+$\int (2x + \cos x) dx = \int 2x dx + \int \cos x dx = 2 \cdot \frac{x^2}{2} + \sin x + C = x^2 + \sin x + C$.

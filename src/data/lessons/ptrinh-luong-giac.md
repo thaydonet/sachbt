@@ -45,3 +45,11 @@ $$
 Dạng: $a \cdot \sin^2 x + b \cdot \sin x + c = 0$ (tương tự với $\cos$, $\tan$, $\cot$)
 
 Cách giải: đặt $t = \sin x$ ($|t| \leq 1$).
+
+
+### Ví dụ minh họa
+**Bài tập:** Giải phương trình $\sin x = \frac{1}{2}$.
+**Lời giải:**
+Ta biết $\sin \frac{\pi}{6} = \frac{1}{2}$.
+Áp dụng công thức nghiệm của phương trình $\sin x = \sin \alpha$:
+$\begin{bmatrix} x = \frac{\pi}{6} + k2\pi \\ x = \pi - \frac{\pi}{6} + k2\pi = \frac{5\pi}{6} + k2\pi \end{bmatrix} \quad (k \in \mathbb{Z})$.

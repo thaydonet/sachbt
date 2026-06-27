@@ -1,21 +1,61 @@
-import { useRef, useMemo } from 'react';
-import { Canvas, useFrame, useThree } from '@react-three/fiber';
-import { OrbitControls, Line } from '@react-three/drei';
+import { useRef, useMemo, useState, useCallback, useEffect } from 'react';
+import ForceGraph3D from 'react-force-graph-3d';
 import * as THREE from 'three';
 import topicData from '../data/topics';
 
-const COLORS = {
-  root: '#fbbf24',
-  branch: '#6366f1',
-  leaf: '#22d3ee',
+// ─── Custom Sprite Text ───────────────────────────────────────────────────────
+function createTextSprite(text, color) {
+  const canvas = document.createElement('canvas');
+  const context = canvas.getContext('2d');
+  
+  context.font = '24px Arial';
+  const textWidth = context.measureText(text).width;
+  
+  canvas.width = Math.max(textWidth + 20, 64);
+  canvas.height = 40;
+  
+  context.font = '24px Arial';
+  context.fillStyle = color;
+  context.textAlign = 'center';
+  context.textBaseline = 'middle';
+  context.fillText(text, canvas.width / 2, canvas.height / 2);
+  
+  const texture = new THREE.CanvasTexture(canvas);
+  texture.colorSpace = THREE.SRGBColorSpace;
+  
+  const spriteMaterial = new THREE.SpriteMaterial({ 
+    map: texture, 
+    transparent: true,
+    depthTest: false 
+  });
+  const sprite = new THREE.Sprite(spriteMaterial);
+  sprite.scale.set(canvas.width / 6, canvas.height / 6, 1);
+  return sprite;
+}
+
+// ─── Theme-aware palette ──────────────────────────────────────────────────────
+const PALETTE_DARK = {
+  root:   { core: '#f0abfc', glow: '#d946ef', line: '#e879f9', text: '#ffffff' },
+  branch: { core: '#a5b4fc', glow: '#6366f1', line: '#818cf8', text: '#ffffff' },
+  leaf:   { core: '#6ee7b7', glow: '#059669', line: '#34d399', text: '#e2e8f0' },
 };
 
+const PALETTE_LIGHT = {
+  root:   { core: '#a21caf', glow: '#86198f', line: '#c026d3', text: '#a21caf' },
+  branch: { core: '#4338ca', glow: '#3730a3', line: '#4f46e5', text: '#4338ca' },
+  leaf:   { core: '#047857', glow: '#065f46', line: '#059669', text: '#064e3b' },
+};
+
+const BG_DARK  = '#0d0d1a';
+const BG_LIGHT = '#f4f6ff';
+
+// ─── Flatten tree ─────────────────────────────────────────────────────────────
 function flattenTree(node, parentId = null, depth = 0) {
   const nodes = [{ ...node, parentId, depth }];
   const links = [];
   if (node.children) {
     for (const child of node.children) {
-      links.push({ source: node.id, target: child.id });
+      links.push({ source: node.id, target: child.id, sourceType: node.type });
       const sub = flattenTree(child, node.id, depth + 1);
       nodes.push(...sub.nodes);
       links.push(...sub.links);
@@ -24,308 +64,182 @@ function flattenTree(node, parentId = null, depth = 0) {
   return { nodes, links };
 }
 
-function getRadius(d) {
-  return d.depth === 0 ? 6 : d.depth === 1 ? 4.5 : 3;
-}
+// ─── Main Graph Component ─────────────────────────────────────────────────────
+export default function KnowledgeGraph3D({ onNodeClick, selectedId, completedNodes = [], searchQuery = '' }) {
+  const isDark = document.documentElement.getAttribute('data-theme') !== 'light';
+  const bgColor = isDark ? BG_DARK : BG_LIGHT;
+  const PALETTE = isDark ? PALETTE_DARK : PALETTE_LIGHT;
 
-function useWindowSize() {
-  const { size } = useThree();
-  return size;
-}
-
-function LinkLine({ link, srcIdx, tgtIdx, positions, color, depth }) {
-  const ref = useRef(null);
-  const size = useWindowSize();
-
-  useFrame(() => {
-    if (!ref.current) return;
-    const p = positions.current;
-    const si = srcIdx;
-    const ti = tgtIdx;
-    const geo = ref.current.geometry;
-    const pos = geo.attributes.position;
-    pos.array[0] = p[si].x; pos.array[1] = p[si].y; pos.array[2] = p[si].z;
-    pos.array[3] = p[ti].x; pos.array[4] = p[ti].y; pos.array[5] = p[ti].z;
-    pos.needsUpdate = true;
-    geo.computeBoundingSphere();
-  });
-
-  return (
-    <Line
-      ref={ref}
-      points={[[0, 0, 0], [0.1, 0.1, 0.1]]}
-      color={color}
-      lineWidth={depth === 0 ? 2.5 : depth === 1 ? 1.8 : 1.2}
-      transparent
-      opacity={0.45}
-      resolution={[size.width * Math.min(2, window.devicePixelRatio || 1), size.height * Math.min(2, window.devicePixelRatio || 1)]}
-    />
-  );
-}
-
-function GraphNode({ node, position, color, radius, selected, onClick }) {
-  const meshRef = useRef(null);
-  const glowRef = useRef(null);
-
-  useFrame(() => {
-    if (!meshRef.current) return;
-    const p = position;
-    meshRef.current.position.set(p.x, p.y, p.z);
-    if (glowRef.current) {
-      glowRef.current.position.set(p.x, p.y, p.z);
-    }
-  });
-
-  return (
-    <group>
-      <mesh
-        ref={meshRef}
-        onClick={(e) => { e.stopPropagation(); onClick(node); }}
-        onPointerOver={(e) => { e.stopPropagation(); document.body.style.cursor = 'pointer'; }}
-        onPointerOut={() => { document.body.style.cursor = 'default'; }}
-      >
-        <sphereGeometry args={[radius, 20, 20]} />
-        <meshStandardMaterial
-          color={color}
-          emissive={color}
-          emissiveIntensity={selected ? 0.5 : 0.08}
-          roughness={0.25}
-          metalness={0.05}
-        />
-      </mesh>
-      <mesh ref={glowRef}>
-        <sphereGeometry args={[radius * (selected ? 1.6 : 1.2), 16, 16]} />
-        <meshBasicMaterial
-          color={color}
-          transparent
-          opacity={selected ? 0.25 : 0.08}
-          depthWrite={false}
-        />
-      </mesh>
-    </group>
-  );
-}
-
-function LabelSprite({ node, position, offsetY, color }) {
-  const ref = useRef(null);
-  const textureRef = useRef(null);
-
-  const canvas = useMemo(() => {
-    const c = document.createElement('canvas');
-    c.width = 512;
-    c.height = 128;
-    const ctx = c.getContext('2d');
-    if (ctx) {
-      ctx.clearRect(0, 0, 512, 128);
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.shadowColor = 'rgba(0,0,0,0.9)';
-      ctx.shadowBlur = 8;
-      ctx.shadowOffsetX = 0;
-      ctx.shadowOffsetY = 0;
-      ctx.fillStyle = color;
-      const fontSize = node.depth === 0 ? 42 : node.depth === 1 ? 36 : 32;
-      ctx.font = `${node.depth <= 1 ? 'bold ' : ''}${fontSize}px "Segoe UI", system-ui, sans-serif`;
-      ctx.fillText(node.name, 256, 64);
-    }
-    return c;
-  }, [node, color]);
-
-  const texture = useMemo(() => {
-    const t = new THREE.CanvasTexture(canvas);
-    t.needsUpdate = true;
-    return t;
-  }, [canvas]);
-
-  useFrame(() => {
-    if (!ref.current) return;
-    const p = position;
-    ref.current.position.set(p.x, p.y + offsetY, p.z);
-    const scale = node.depth === 0 ? 60 : node.depth === 1 ? 50 : 40;
-    ref.current.scale.set(scale, scale * 0.25, 1);
-  });
-
-  return (
-    <sprite ref={ref}>
-      <spriteMaterial map={texture} transparent depthTest={false} sizeAttenuation />
-    </sprite>
-  );
-}
-
-function ForceGraph({ onNodeClick, selectedId }) {
   const { nodes, links } = useMemo(() => flattenTree(topicData), []);
-  const positions = useRef(nodes.map(() => ({
-    x: (Math.random() - 0.5) * 80,
-    y: (Math.random() - 0.5) * 80,
-    z: (Math.random() - 0.5) * 40,
-    vx: 0, vy: 0, vz: 0,
-  })));
-  const frameCount = useRef(0);
-  const settled = useRef(false);
+  const [hoverNode, setHoverNode] = useState(null);
+  const fgRef = useRef();
 
-  const nodeMap = useMemo(() => {
-    const m = {};
-    nodes.forEach((n, i) => { m[n.id] = i; });
-    return m;
+  // Create a set of highlighted node IDs (hover or search)
+  const relatedNodes = useMemo(() => {
+    const set = new Set();
+    if (!hoverNode) return set;
+    set.add(hoverNode.id);
+    links.forEach(link => {
+      const srcId = typeof link.source === 'object' ? link.source.id : link.source;
+      const tgtId = typeof link.target === 'object' ? link.target.id : link.target;
+      if (srcId === hoverNode.id) set.add(tgtId);
+      if (tgtId === hoverNode.id) set.add(srcId);
+    });
+    return set;
+  }, [hoverNode, links]);
+
+  const searchedSet = useMemo(() => {
+    if (!searchQuery || !searchQuery.trim()) return null;
+    const q = searchQuery.toLowerCase();
+    const set = new Set();
+    nodes.forEach(n => {
+      if (n.name.toLowerCase().includes(q) || (n.description && n.description.toLowerCase().includes(q))) {
+        set.add(n.id);
+      }
+    });
+    return set;
+  }, [searchQuery, nodes]);
+
+  // Adjust engine parameters on load to give a more spaced-out ELTiverse look
+  useEffect(() => {
+    if (fgRef.current) {
+      const fg = fgRef.current;
+      fg.d3Force('charge').strength(-250);
+      fg.d3Force('link').distance(link => {
+        const srcNode = nodes.find(n => n.id === (typeof link.source === 'object' ? link.source.id : link.source));
+        const depth = srcNode?.depth || 0;
+        return depth === 0 ? 100 : depth === 1 ? 60 : 40;
+      });
+    }
   }, [nodes]);
 
-  const linkMeta = useMemo(() => links.map(l => {
-    const si = nodeMap[typeof l.source === 'object' ? l.source.id : l.source];
-    const ti = nodeMap[typeof l.target === 'object' ? l.target.id : l.target];
-    const src = nodes[si];
-    const depth = src ? src.depth : 0;
-    let targetDist = 110;
-    if (src) {
-      if (src.depth === 0) targetDist = 150;
-      else if (src.depth === 1) targetDist = 120;
+  const handleNodeClick = useCallback(node => {
+    // Zoom in and center on the clicked node
+    const distance = 80;
+    const distRatio = 1 + distance / Math.hypot(node.x, node.y, node.z);
+
+    if (fgRef.current) {
+      fgRef.current.cameraPosition(
+        { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
+        node,
+        1500
+      );
     }
-    return { si, ti, depth, targetDist };
-  }), [links, nodeMap, nodes]);
-
-  useFrame(() => {
-    frameCount.current += 1;
-    if (frameCount.current > 400) {
-      settled.current = true;
-      return;
-    }
-
-    const pos = positions.current;
-    const progress = Math.min(frameCount.current / 200, 1);
-    const alpha = 0.03 * (1 - progress);
-    const decay = 0.82;
-
-    for (const p of pos) { p.fx = 0; p.fy = 0; p.fz = 0; }
-
-    for (const p of pos) {
-      p.fx -= p.x * 0.012;
-      p.fy -= p.y * 0.012;
-      p.fz -= p.z * 0.006;
-    }
-
-    for (let i = 0; i < pos.length; i++) {
-      for (let j = i + 1; j < pos.length; j++) {
-        let dx = pos[i].x - pos[j].x;
-        let dy = pos[i].y - pos[j].y;
-        let dz = pos[i].z - pos[j].z;
-        const dist = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1;
-        const minDist = (getRadius(nodes[i]) + getRadius(nodes[j])) * 2.5;
-        const force = dist < minDist
-          ? 400 * (minDist - dist) / dist
-          : 3000 / (dist * dist);
-        const f = Math.min(force, 80);
-        pos[i].fx += (dx / dist) * f;
-        pos[j].fx -= (dx / dist) * f;
-        pos[i].fy += (dy / dist) * f;
-        pos[j].fy -= (dy / dist) * f;
-        pos[i].fz += (dz / dist) * f * 0.3;
-        pos[j].fz -= (dz / dist) * f * 0.3;
-      }
-    }
-
-    for (const meta of linkMeta) {
-      if (meta.si === undefined || meta.ti === undefined) continue;
-      const dx = pos[meta.ti].x - pos[meta.si].x;
-      const dy = pos[meta.ti].y - pos[meta.si].y;
-      const dz = pos[meta.ti].z - pos[meta.si].z;
-      const dist = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1;
-      const force = (dist - meta.targetDist) * 0.04;
-      pos[meta.si].fx += (dx / dist) * force;
-      pos[meta.ti].fx -= (dx / dist) * force;
-      pos[meta.si].fy += (dy / dist) * force;
-      pos[meta.ti].fy -= (dy / dist) * force;
-      pos[meta.si].fz += (dz / dist) * force * 0.5;
-      pos[meta.ti].fz -= (dz / dist) * force * 0.5;
-    }
-
-    for (const p of pos) {
-      p.vx += p.fx * alpha;
-      p.vy += p.fy * alpha;
-      p.vz += p.fz * alpha;
-      p.vx *= decay;
-      p.vy *= decay;
-      p.vz *= decay;
-      p.x += p.vx;
-      p.y += p.vy;
-      p.z += p.vz;
-    }
-  });
+    onNodeClick(node);
+  }, [onNodeClick]);
 
   return (
-    <>
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[80, 120, 100]} intensity={0.9} />
-      <directionalLight position={[-80, -40, -60]} intensity={0.3} />
+    <div className="graph-container graph-3d" style={{ background: bgColor }}>
+      <ForceGraph3D
+        ref={fgRef}
+        graphData={{ nodes, links }}
+        backgroundColor={bgColor}
+        nodeId="id"
+        nodeLabel="" // We disable the default tooltip because we use SpriteText
+        nodeThreeObject={node => {
+          const isCompleted = completedNodes.includes(node.id);
+          const pal = PALETTE[node.type] || PALETTE.leaf;
+          const coreColor = isCompleted ? '#10b981' : pal.core;
+          const textColor = isCompleted ? '#34d399' : pal.text;
+          const nodeRadius = node.depth === 0 ? 8 : node.depth === 1 ? 5 : 3;
 
-      {linkMeta.map((meta, k) => {
-        if (meta.si === undefined || meta.ti === undefined) return null;
-        const src = nodes[meta.si];
-        const color = COLORS[src?.type] || COLORS.leaf;
-        return (
-          <LinkLine
-            key={`link-${k}`}
-            srcIdx={meta.si}
-            tgtIdx={meta.ti}
-            positions={positions}
-            color={color}
-            depth={meta.depth}
-          />
-        );
-      })}
+          const isHoveredOrSelected = relatedNodes.size > 0;
+          const isSearched = searchedSet != null && searchedSet.size > 0;
 
-      {nodes.map((node, i) => {
-        const color = COLORS[node.type] || COLORS.leaf;
-        const r = getRadius(node);
-        return (
-          <group key={node.id}>
-            <GraphNode
-              node={node}
-              position={positions.current[i]}
-              color={color}
-              radius={r}
-              selected={node.id === selectedId}
-              onClick={onNodeClick}
-            />
-            <LabelSprite
-              node={node}
-              position={positions.current[i]}
-              offsetY={-r - 12}
-              color={color}
-            />
-          </group>
-        );
-      })}
+          let highlighted = false;
+          let dimmed = false;
+          if (isHoveredOrSelected) {
+            highlighted = relatedNodes.has(node.id);
+            dimmed = !highlighted;
+          } else if (isSearched) {
+            highlighted = searchedSet.has(node.id);
+            dimmed = !highlighted;
+          }
 
-      <OrbitControls
-        enablePan
-        enableZoom
-        enableRotate
-        minDistance={30}
-        maxDistance={300}
-        autoRotate={false}
-        dampingFactor={0.1}
-        enableDamping
-      />
-    </>
-  );
-}
+          const opacity = dimmed ? 0.15 : highlighted ? 1 : 0.8;
 
-export default function KnowledgeGraph3D({ onNodeClick, selectedId }) {
-  const bgColor = document.documentElement.getAttribute('data-theme') === 'dark' ? '#0a0a1a' : '#f0f4ff';
+          const group = new THREE.Group();
 
-  return (
-    <div className="graph-container graph-3d">
-      <Canvas
-        camera={{ position: [0, 0, 120], fov: 45, far: 500, near: 1 }}
-        gl={{ antialias: true, alpha: false }}
-        onCreated={({ scene }) => {
-          scene.background = new THREE.Color(bgColor);
-          scene.fog = new THREE.Fog(bgColor, 200, 400);
+          // Sphere
+          const geometry = new THREE.SphereGeometry(nodeRadius, 16, 16);
+          const material = new THREE.MeshBasicMaterial({ 
+            color: coreColor,
+            transparent: true,
+            opacity: opacity
+          });
+          const sphere = new THREE.Mesh(geometry, material);
+          group.add(sphere);
+
+          // If node is selected, add a halo
+          if (node.id === selectedId) {
+            const haloGeo = new THREE.SphereGeometry(nodeRadius * 1.5, 16, 16);
+            const haloMat = new THREE.MeshBasicMaterial({
+              color: coreColor,
+              transparent: true,
+              opacity: 0.3 * opacity,
+              side: THREE.BackSide
+            });
+            const halo = new THREE.Mesh(haloGeo, haloMat);
+            group.add(halo);
+          }
+
+          // Text Label
+          const textHeight = node.depth === 0 ? 8 : node.depth === 1 ? 6 : 4;
+          const labelText = isCompleted ? `${node.name} ✅` : node.name;
+          const sprite = createTextSprite(labelText, textColor);
+          sprite.scale.set(sprite.scale.x * (textHeight/4), sprite.scale.y * (textHeight/4), 1);
+          sprite.position.y = nodeRadius + (textHeight / 2) + 2;
+          sprite.material.opacity = opacity;
+          sprite.material.depthWrite = false;
+          group.add(sprite);
+
+          return group;
         }}
-      >
-        <ForceGraph onNodeClick={onNodeClick} selectedId={selectedId} />
-      </Canvas>
-      <div className="graph-hint">
-        <span>🖱 Kéo để xoay • Lăn để zoom • Click vào node để xem chi tiết</span>
+        linkWidth={link => {
+          const srcId = typeof link.source === 'object' ? link.source.id : link.source;
+          const tgtId = typeof link.target === 'object' ? link.target.id : link.target;
+          if (relatedNodes.has(srcId) && relatedNodes.has(tgtId)) return 1.5;
+          return 0.5;
+        }}
+        linkColor={link => {
+          const srcId = typeof link.source === 'object' ? link.source.id : link.source;
+          const tgtId = typeof link.target === 'object' ? link.target.id : link.target;
+          const highlighted = relatedNodes.has(srcId) && relatedNodes.has(tgtId);
+          const dimmed = relatedNodes.size > 0 && !highlighted;
+          
+          if (highlighted) return isDark ? '#ffffff' : '#6366f1';
+          if (dimmed) return isDark ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)';
+          
+          return PALETTE[link.sourceType || 'leaf'].line;
+        }}
+        linkOpacity={0.6}
+        linkDirectionalParticles={link => {
+          if (!link.source || !link.target) return 0;
+          const srcId = typeof link.source === 'object' ? link.source.id : link.source;
+          const tgtId = typeof link.target === 'object' ? link.target.id : link.target;
+          return (relatedNodes.has(srcId) && relatedNodes.has(tgtId)) ? 4 : 0;
+        }}
+        linkDirectionalParticleWidth={2}
+        onNodeClick={handleNodeClick}
+        onNodeHover={node => {
+          setHoverNode(node);
+          document.body.style.cursor = node ? 'pointer' : 'default';
+        }}
+        enableNodeDrag={false}
+      />
+      
+      {/* Legend */}
+      <div className={`graph-legend-3d ${isDark ? 'legend-dark' : 'legend-light'}`}>
+        <span className="legend-dot" style={{ background: PALETTE.root.core, boxShadow: `0 0 8px ${PALETTE.root.glow}` }} />
+        <span className="legend-label">Gốc</span>
+        <span className="legend-dot" style={{ background: PALETTE.branch.core, boxShadow: `0 0 8px ${PALETTE.branch.glow}` }} />
+        <span className="legend-label">Chương</span>
+        <span className="legend-dot" style={{ background: PALETTE.leaf.core, boxShadow: `0 0 8px ${PALETTE.leaf.glow}` }} />
+        <span className="legend-label">Bài học</span>
+      </div>
+
+      <div className={`graph-hint ${isDark ? '' : 'hint-light'}`}>
+        <span>🖱 Kéo để xoay · Lăn để zoom · Hover để highlight · Click để đọc bài</span>
       </div>
     </div>
   );

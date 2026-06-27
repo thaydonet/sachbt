@@ -23,7 +23,7 @@ function flattenTree(node, parentId = null, depth = 0) {
   return { nodes, links };
 }
 
-export default function KnowledgeGraph({ onNodeClick, selectedId }) {
+export default function KnowledgeGraph({ onNodeClick, selectedId, completedNodes = [], searchQuery = '' }) {
   const svgRef = useRef(null);
   const containerRef = useRef(null);
   const simulationRef = useRef(null);
@@ -98,7 +98,8 @@ export default function KnowledgeGraph({ onNodeClick, selectedId }) {
       })
       .attr('stroke-width', (d) => {
         const src = nodes.find(n => n.id === (typeof d.source === 'object' ? d.source.id : d.source));
-        return src.depth === 0 ? 2.5 : src.depth === 1 ? 1.8 : 1.2;
+        if (!src) return 1.2;
+        return src.depth === 0 ? 2.8 : src.depth === 1 ? 2.0 : src.depth === 2 ? 1.4 : 0.8;
       })
       .attr('marker-end', (d) => {
         const src = nodes.find(n => n.id === (typeof d.source === 'object' ? d.source.id : d.source));
@@ -116,7 +117,12 @@ export default function KnowledgeGraph({ onNodeClick, selectedId }) {
 
     // Node circles
     nodeElements.append('circle')
-      .attr('r', (d) => d.depth === 0 ? 22 : d.depth === 1 ? 16 : 11)
+      .attr('r', (d) => {
+        if (d.depth === 0) return 22;
+        if (d.depth === 1) return 16;
+        if (d.depth === 2) return 11;
+        return 7;
+      })
       .attr('fill', (d) => {
         const c = getNodeColor(d);
         return c.bg;
@@ -131,7 +137,12 @@ export default function KnowledgeGraph({ onNodeClick, selectedId }) {
 
     // Inner dot
     nodeElements.append('circle')
-      .attr('r', (d) => d.depth === 0 ? 8 : d.depth === 1 ? 5 : 3)
+      .attr('r', (d) => {
+        if (d.depth === 0) return 8;
+        if (d.depth === 1) return 5;
+        if (d.depth === 2) return 3;
+        return 1.5;
+      })
       .attr('fill', 'rgba(255,255,255,0.35)')
       .attr('pointer-events', 'none');
 
@@ -143,14 +154,14 @@ export default function KnowledgeGraph({ onNodeClick, selectedId }) {
       .attr('class', 'node-label')
       .attr('text-anchor', 'middle')
       .attr('dy', (d) => {
-        const r = d.depth === 0 ? 22 : d.depth === 1 ? 16 : 11;
-        return r + 18;
+        const r = d.depth === 0 ? 22 : d.depth === 1 ? 16 : d.depth === 2 ? 11 : 7;
+        return r + 16;
       })
       .attr('fill', (d) => {
         const c = getNodeColor(d);
         return c.bg;
       })
-      .attr('font-size', (d) => d.depth === 0 ? 14 : d.depth === 1 ? 12 : 10)
+      .attr('font-size', (d) => d.depth === 0 ? 14 : d.depth === 1 ? 12 : d.depth === 2 ? 10 : 8.5)
       .attr('font-weight', (d) => d.depth <= 1 ? '600' : '500')
       .text((d) => d.name)
       .style('pointer-events', 'none');
@@ -160,22 +171,27 @@ export default function KnowledgeGraph({ onNodeClick, selectedId }) {
       .force('link', d3.forceLink(links)
         .id((d) => d.id)
         .distance((d) => {
-          if (d.source.depth === 0) return 180;
-          if (d.source.depth === 1) return 140;
-          return 110;
+          if (d.source.depth === 0) return 140;
+          if (d.source.depth === 1) return 90;
+          if (d.source.depth === 2) return 60;
+          return 40;
         })
-        .strength(0.6)
+        .strength(0.65)
       )
       .force('charge', d3.forceManyBody()
         .strength((d) => {
-          if (d.depth === 0) return -900;
-          if (d.depth === 1) return -500;
-          return -300;
+          if (d.depth === 0) return -700;
+          if (d.depth === 1) return -400;
+          if (d.depth === 2) return -150;
+          return -60;
         })
       )
       .force('center', d3.forceCenter(width / 2, height / 2))
       .force('collision', d3.forceCollide().radius((d) => {
-        return (d.depth === 0 ? 50 : d.depth === 1 ? 40 : 28);
+        if (d.depth === 0) return 45;
+        if (d.depth === 1) return 35;
+        if (d.depth === 2) return 22;
+        return 14;
       }))
       .on('tick', () => {
         linkElements
@@ -215,7 +231,7 @@ export default function KnowledgeGraph({ onNodeClick, selectedId }) {
         const circle = d3.select(this).select('circle:first-child');
         circle
           .transition().duration(200)
-          .attr('r', (d.depth === 0 ? 22 : d.depth === 1 ? 16 : 11) * 1.25);
+          .attr('r', (d.depth === 0 ? 22 : d.depth === 1 ? 16 : d.depth === 2 ? 11 : 7) * 1.25);
 
         // Highlight connected
         const connectedIds = new Set();
@@ -249,11 +265,11 @@ export default function KnowledgeGraph({ onNodeClick, selectedId }) {
           .transition().duration(200)
           .attr('opacity', (n) => connectedIds.has(n.id) || n.id === d.id ? 1 : 0.15);
       })
-      .on('mouseleave', function () {
+      .on('mouseleave', function (event, d) {
         const circle = d3.select(this).select('circle:first-child');
         circle
           .transition().duration(200)
-          .attr('r', (d) => d.depth === 0 ? 22 : d.depth === 1 ? 16 : 11);
+          .attr('r', d.depth === 0 ? 22 : d.depth === 1 ? 16 : d.depth === 2 ? 11 : 7);
 
         linkElements
           .transition().duration(300)
@@ -299,6 +315,61 @@ export default function KnowledgeGraph({ onNodeClick, selectedId }) {
       .attr('stroke-width', (d) => d.id === selectedId ? 3 : 1.5)
       .attr('filter', (d) => d.id === selectedId ? 'url(#glow)' : null);
   }, [selectedId]);
+
+  // Update completed status
+  useEffect(() => {
+    if (!nodeElementsRef.current || !labelElementsRef.current) return;
+    
+    nodeElementsRef.current.selectAll('circle:first-child')
+      .transition().duration(300)
+      .attr('stroke', (d) => completedNodes.includes(d.id) ? '#10b981' : getNodeColor(d).stroke);
+      
+    labelElementsRef.current
+      .text((d) => completedNodes.includes(d.id) ? `${d.name} ✅` : d.name);
+  }, [completedNodes, getNodeColor]);
+
+  // Handle Search Query Highlight and Physics
+  useEffect(() => {
+    if (!nodeElementsRef.current || !linkElementsRef.current || !labelElementsRef.current || !simulationRef.current) return;
+    
+    const q = searchQuery.trim().toLowerCase();
+    const isSearchActive = q.length > 0;
+    
+    const isMatch = (d) => {
+      if (!isSearchActive) return false;
+      return d.name.toLowerCase().includes(q) || (d.description && d.description.toLowerCase().includes(q));
+    };
+
+    nodeElementsRef.current
+      .transition().duration(400)
+      .attr('opacity', (d) => !isSearchActive || isMatch(d) ? 1 : 0.15);
+      
+    labelElementsRef.current
+      .transition().duration(400)
+      .attr('opacity', (d) => !isSearchActive || isMatch(d) ? 1 : 0.15);
+
+    linkElementsRef.current
+      .transition().duration(400)
+      .attr('opacity', (l) => {
+        if (!isSearchActive) return 0.6;
+        const sMatch = isMatch(typeof l.source === 'object' ? l.source : {name: '', description: ''});
+        const tMatch = isMatch(typeof l.target === 'object' ? l.target : {name: '', description: ''});
+        return (sMatch || tMatch) ? 0.8 : 0.05;
+      });
+
+    const width = containerRef.current.clientWidth || 800;
+    const height = containerRef.current.clientHeight || 600;
+
+    if (isSearchActive) {
+      simulationRef.current
+        .force('searchX', d3.forceX(width / 2).strength(d => isMatch(d) ? 0.12 : 0))
+        .force('searchY', d3.forceY(height / 2).strength(d => isMatch(d) ? 0.12 : 0));
+      simulationRef.current.alpha(0.6).restart();
+    } else {
+      simulationRef.current.force('searchX', null).force('searchY', null);
+      simulationRef.current.alpha(0.3).restart();
+    }
+  }, [searchQuery]);
 
   return (
     <div className="graph-container" ref={containerRef}>

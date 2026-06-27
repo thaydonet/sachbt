@@ -31,3 +31,13 @@ $$
 $$
 \cos \varphi = \frac{|\vec{n}_1 \cdot \vec{n}_2|}{|\vec{n}_1| \cdot |\vec{n}_2|}
 $$
+
+
+### Ví dụ minh họa
+**Bài tập:** Viết phương trình mặt phẳng $(P)$ đi qua điểm $M(1; 2; -3)$ và có vectơ pháp tuyến $\vec{n} = (2; -1; 4)$.
+**Lời giải:**
+Áp dụng phương trình tổng quát của mặt phẳng:
+$A(x - x_0) + B(y - y_0) + C(z - z_0) = 0$
+$\Rightarrow 2(x - 1) - 1(y - 2) + 4(z + 3) = 0$
+$\Leftrightarrow 2x - 2 - y + 2 + 4z + 12 = 0$
+$\Leftrightarrow 2x - y + 4z + 12 = 0$.

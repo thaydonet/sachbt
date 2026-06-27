@@ -129,6 +129,37 @@ html, body, #root {
   opacity: 0.3;
 }
 
+.view-mode-toggle {
+  display: flex;
+  background: var(--bg-header);
+  border: 1px solid var(--border-header);
+  border-radius: 8px;
+  padding: 2px;
+  gap: 2px;
+}
+
+.view-mode-btn {
+  background: transparent;
+  border: none;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  color: var(--text-secondary);
+  transition: all 0.2s;
+  font-family: inherit;
+}
+
+.view-mode-btn:hover {
+  color: var(--text-primary);
+}
+
+.view-mode-btn.active {
+  background: rgba(99, 102, 241, 0.15);
+  color: var(--text-primary);
+}
+
 .theme-toggle {
   background: none;
   border: 1px solid var(--border-header);
@@ -168,3 +199,202 @@ html, body, #root {
 ::-webkit-scrollbar-thumb:hover {
   background: var(--scrollbar-thumb-hover);
 }
+
+.header-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  max-width: 400px;
+  margin: 0 20px;
+}
+
+.search-container {
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  font-size: 14px;
+  opacity: 0.5;
+}
+
+.search-input {
+  width: 100%;
+  padding: 8px 12px 8px 36px;
+  border-radius: 20px;
+  border: 1px solid var(--border-header);
+  background: var(--bg-page);
+  color: var(--text-primary);
+  outline: none;
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.search-input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.2);
+}
+
+.search-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  width: 100%;
+  background: var(--bg-header);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--border-header);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  max-height: 400px;
+  overflow-y: auto;
+  z-index: 100;
+  padding: 8px;
+}
+
+.search-result-item {
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.search-result-item:hover {
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.search-result-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--text-primary);
+}
+
+.search-result-desc {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin-top: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.loading-canvas {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+/* --- Progress Widget --- */
+.progress-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 120px;
+  background: var(--bg-page);
+  border: 1px solid var(--border-header);
+  padding: 6px 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+[data-theme="dark"] .progress-widget {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.progress-text {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.progress-value {
+  color: var(--text-primary);
+  font-weight: 700;
+}
+
+.progress-bar-bg {
+  width: 100%;
+  height: 6px;
+  background: var(--border-header);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #3b82f6, #8b5cf6, #ec4899);
+  background-size: 200% 100%;
+  animation: gradientFlow 3s ease infinite;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 8px rgba(139, 92, 246, 0.5);
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+/* --- Mobile Responsive Layout --- */
+@media (max-width: 768px) {
+  .app-header {
+    padding: 10px 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .header-center {
+    order: 3;
+    max-width: 100%;
+    margin: 0;
+    width: 100%;
+  }
+
+  .app-header h1 {
+    font-size: 16px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .header-right {
+    gap: 8px;
+  }
+
+  .dim-toggle {
+    padding: 4px 6px;
+  }
+  
+  .view-mode-btn {
+    padding: 4px 8px;
+  }
+
+  .progress-widget {
+    min-width: unset;
+    padding: 4px 8px;
+  }
+  
+  .progress-text .progress-label {
+    display: none;
+  }
+}
+
